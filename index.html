@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Add2Calendar</title>
+<link rel="stylesheet" href="css/add2calendar.css">
+<style>
+* { margin: 0; padding: 0; }
+body {
+  background-color: #fff;
+}
+
+.wrap {
+  padding: 120px;
+}
+
+#single-event,
+#multi-events {
+  float: left;
+  margin: 12px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="single-event">
+  </div>
+
+  <div id="multi-events">
+  </div>
+<div>
+<script src="js/add2calendar.js"></script>
+<script>
+/* Single Event */
+var startDate,
+  endDate;
+
+var tmp = new Date();
+tmp.setDate(tmp.getDate() + 7); // next 7 days
+startDate = tmp.toString();
+
+tmp.setDate(tmp.getDate() + 1); // next 8 days
+endDate = tmp.toString();
+
+var singleEventArgs = {
+  title       : 'Add2Calendar plugin event',
+  start       : startDate,
+  end         : endDate,
+  location    : 'Bangkok, Thailand',
+  description : 'Welcome everyone to simple plugin that allow you to add event to calendar easily.',
+  customClass : 'custom-class',
+  customId    : 'custom-id'
+};
+var singleEvent = new Add2Calendar(singleEventArgs);
+var singleEventNode = singleEvent.getSingleEventWidgetNode();
+document.querySelector('#single-event').appendChild(singleEventNode);
+
+/* Multi Event */
+var multiEventsArgs = [
+  {
+    title       : 'Add2Calendar plugin event 1',
+    start       : 'July 27, 2016 10:30',
+    end         : 'July 27, 2016 19:30',
+    location    : 'Bangkok, Thailand',
+    description : 'Event description 1',
+    customClass : 'custom-class',
+    customId    : 'custom-id'
+  },
+  {
+    title       : 'Add2Calendar plugin event 2',
+    start       : 'July 28, 2016 10:30',
+    end         : 'July 29, 2016 19:20',
+    location    : 'Bangkok, Thailand',
+    description : 'Event description 2',
+    customClass : 'custom-class',
+    customId    : 'custom-id'
+  }
+];
+var multiEvents = new Add2Calendar(multiEventsArgs);
+var multiEventsNode = multiEvents.getSingleEventWidgetNode();
+document.querySelector('#multi-events').appendChild(multiEventsNode);
+</script>
+</body>
+</html>

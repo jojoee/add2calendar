@@ -1,0 +1,29 @@
+{
+  "name": "add2calendar",
+  "description": "Allow you to add event to calendar easier",
+  "main": "",
+  "authors": [
+    "Nathachai Thongniran <inid3a@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "calendar",
+    "event",
+    "static"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    
+  }
+}
