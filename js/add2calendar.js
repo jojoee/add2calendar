@@ -175,10 +175,10 @@ var Add2Calendar = function(eventData) {
         endDate = this.formatTime(new Date(this.eventData.end));
 
       var googleArgs = {
-        'text'      : this.eventData.title,
+        'text'      : (this.eventData.title || ''),
         'dates'     : startDate + '/' + endDate,
-        'location'  : this.eventData.location,
-        'details'   : this.eventData.description,
+        'location'  : (this.eventData.location || ''),
+        'details'   : (this.eventData.description || ''),
         'sprop'     : ''
       };
 
@@ -215,9 +215,9 @@ var Add2Calendar = function(eventData) {
           'URL:'          + document.URL,
           'DTSTART:'      + startDate,
           'DTEND:'        + endDate,
-          'SUMMARY:'      + this.eventData.title,
-          'DESCRIPTION:'  + this.eventData.description,
-          'LOCATION:'     + this.eventData.location,
+          'SUMMARY:'      + (this.eventData.title || ''),
+          'DESCRIPTION:'  + (this.eventData.description || ''),
+          'LOCATION:'     + (this.eventData.location || ''),
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\n')
@@ -239,9 +239,9 @@ var Add2Calendar = function(eventData) {
           'URL:'          + document.URL,
           'DTSTART:'      + startDate,
           'DTEND:'        + endDate,
-          'SUMMARY:'      + data.title,
-          'DESCRIPTION:'  + data.description,
-          'LOCATION:'     + data.location,
+          'SUMMARY:'      + (data.title || ''),
+          'DESCRIPTION:'  + (data.description || ''),
+          'LOCATION:'     + (data.location || ''),
           'END:VEVENT',
         ];
 
@@ -306,11 +306,11 @@ var Add2Calendar = function(eventData) {
       endDate =  this.formatTime(endDate).slice(0, -1);
 
       var outlookOnlineArgs = {
-        'summary'     : this.eventData.title,
+        'summary'     : (this.eventData.title || ''),
         'dtstart'     : startDate,
         'dtend'       : endDate,
-        'location'    : this.eventData.location,
-        'description' : this.eventData.description
+        'location'    : (this.eventData.location || ''),
+        'description' : (this.eventData.description || '')
       };
 
       this.outlookOnlineUrl = 'http://calendar.live.com/calendar/calendar.aspx?rru=addevent&' + this.serialize(outlookOnlineArgs);
@@ -348,12 +348,12 @@ var Add2Calendar = function(eventData) {
       var yahooArgs = {
         'view'      : 'd',
         'type'      : '20',
-        'title'     : this.eventData.title,
+        'title'     : (this.eventData.title || ''),
         'st'        : startDate,
         'et'        : endDate,
         // 'dur'       : '',
-        'in_loc'    : this.eventData.location,
-        'desc'      : this.eventData.description
+        'in_loc'    : (this.eventData.location || ''),
+        'desc'      : (this.eventData.description || '')
       };
 
       this.yahooUrl = 'https://calendar.yahoo.com/?v=60&' + this.serialize(yahooArgs);
