@@ -34,9 +34,7 @@ var singleEventArgs = {
   start       : 'July 27, 2016 10:30',
   end         : 'July 29, 2016 19:20',
   location    : 'Bangkok, Thailand',
-  description : 'Event description',
-  customClass : 'custom-class',
-  customId    : 'custom-id'
+  description : 'Event description'
 };
 var singleEvent = new Add2Calendar(singleEventArgs);
 var singleEventNode = singleEvent.getSingleEventWidgetNode();
@@ -51,16 +49,12 @@ title       : 'Add2Calendar plugin event',
 start       : 'July 27, 2016 10:30',
 end         : 'July 29, 2016 19:20',
 location    : 'Bangkok, Thailand',
-description : 'Event description.',
-customClass : 'custom-class',
-customId    : 'custom-id'
+description : 'Event description.'
 
 ---- Default
 title       : ''
 location    : ''
 description : ''
-customClass : textDomain
-customId    : textDomain
 
 ---- Type
 title       : <string>
@@ -68,8 +62,6 @@ location    : <string>
 start       : <string> (date format) (required)
 end         : <string> (date format) (required)
 description : <string>
-customClass : <string>
-customId    : <string>
 ```
 
 ## Why this plugin
@@ -116,7 +108,6 @@ Apologize me, if I miss something
 - [ ] Unit test
 - [ ] Create default value of `end` variable (should be equal `start` + 1 day)
 - [ ] Support ES6 (module export)
-- [ ] Support `customClass` and `customId`
 - [x] Support callback function
 
 ## Format and others

@@ -405,8 +405,8 @@ var Add2Calendar = function(eventData) {
 
     var result = document.createElement('div');
     result.innerHTML = html;
-    result.className = 'a2cldr';
-    result.id = 'a2cldr';
+    result.className = this.textDomain;
+    result.id = this.textDomain;
 
     return result;
   }
@@ -458,7 +458,7 @@ var Add2Calendar = function(eventData) {
     title       : '',
     location    : '',
     description : '',
-    customClass : this.textDomain,
+    customClass : '',
     customId    : this.textDomain,
     lang        : 'en' // country code
   };
