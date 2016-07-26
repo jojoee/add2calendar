@@ -37,8 +37,7 @@ var singleEventArgs = {
   description : 'Event description'
 };
 var singleEvent = new Add2Calendar(singleEventArgs);
-var singleEventNode = singleEvent.getSingleEventWidgetNode();
-document.querySelector('#single-event').appendChild(singleEventNode);
+singleEvent.createWidget('#single-event');
 ```
 
 ```
