@@ -357,15 +357,53 @@ var Add2Calendar = function(eventData) {
   /*================================================================ Widget
   */
   
-  this.getSingleEventWidgetNode = function() {
-    var html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">Add to Calendar</span>' +
-      '<ul class="a2cldr-list">';
+  this.getEventListHtml = function() {
+    var html = '<ul class="a2cldr-list">';
+
+    html += this.getEventListItemsHtml();
+    html += '</ul>';
+
+    return html;
+  }
+
+  this.getEventListItemsHtml = function() {
+    var html = '';
 
     html += this.getGoogleLiHtml();
     html += this.getICalLiHtml();
     html += this.getOutlookLiHtml();
     html += this.getOutlookOnlineLiHtml();
     html += this.getYahooLiHtml();
+
+    return html;
+  }
+
+  // UNUSED
+  // QUITE DUPLICATE
+  this.getEventNotFoundListHtml = function() {
+    var html = '<ul class="a2cldr-list">';
+
+    html += this.getEventNotFoundListItemsHtml();
+    html += '</ul>';
+
+    return html;
+  }
+
+  // UNUSED
+  // QUITE DUPLICATE
+  this.getEventNotFoundListItemsHtml = function() {
+    var html = '';
+
+    html += '<li class="a2cldr-item a2cldr-not-found">';
+    html += '<span class="not-found" href="javascript:;">Not Found</span>';
+    html += '</li>';
+
+    return html;
+  }
+
+  this.getWidgetNode = function() {
+    var html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">Add to Calendar</span>';
+    html += this.getEventListHtml();
 
     var result = document.createElement('div');
     result.innerHTML = html;
@@ -374,14 +412,27 @@ var Add2Calendar = function(eventData) {
 
     return result;
   }
+
+  // PUBLIC
+  this.createWidget = function(selector) {
+    this.selector = selector;
+    this.eWidget = document.querySelector(selector);
+
+    var node = this.getWidgetNode();
+    this.eWidget.appendChild(node);
+  }
+
+  // PUBLIC
+  // UNUSED
+  this.updateWidget = function(eventData) {
+    this.update(eventData);
+
+    var ele = document.querySelector(this.selector + ' .a2cldr-list');
+    ele.innerHTML = this.getEventListItemsHtml();
+  }
   
   /*================================================================ Init & Others
-  */ 
-  
-  // http://stackoverflow.com/questions/3390396/how-to-check-for-undefined-in-javascript
-  // http://stackoverflow.com/questions/2647867/how-to-determine-if-variable-is-undefined-or-null
-  if (typeof eventData == 'undefined') return false;
-  if (! this.isValidEventData(eventData)) return false;
+  */
   
   this.textDomain = 'a2cldr';
   this.add2calendarBtnTextMap = {
@@ -405,16 +456,16 @@ var Add2Calendar = function(eventData) {
     customId    : this.textDomain,
     lang        : 'en' // country code
   };
+  
+  this.eventData;
+  this.isSingleEvent;
+  this.selector;
+  this.eWidget;
 
-  // TODO
-  // merge `eventData` with `defaultEventData`
-  this.eventData = eventData;
-  this.isSingleEvent = ! this.isArray(eventData);
-
-  this.googleUrl = '';
-  this.iCalUrl = ''; // iCal and Outlook
-  this.yahooUrl = '';
-  this.outlookOnline = '';
+  this.googleUrl;
+  this.iCalUrl; // iCal and Outlook
+  this.yahooUrl;
+  this.outlookOnline;
 
   this.updateAllCalendars = function() {
     this.updateGoogleUrl();
@@ -423,9 +474,33 @@ var Add2Calendar = function(eventData) {
     this.updateOutlookOnlineUrl();
   }
 
-  this.init = function() {
+  this.init = function(eventData) {
+    this.isSingleEvent = ! this.isArray(eventData);
+
+    if (! this.isValidEventData(eventData)) {
+      console.log('Event data format is not valid');
+
+      return false;
+    }
+    
+    // TODO
+    // merge `eventData` with `defaultEventData`
+    this.eventData = eventData;
+    
+    this.selector = '';
+    this.eWidget = null;
+
+    this.googleUrl = '';
+    this.iCalUrl = ''; // iCal and Outlook
+    this.yahooUrl = '';
+    this.outlookOnline = '';
+
     this.updateAllCalendars();
   }
 
-  this.init();
+  this.update = function(eventData) {
+    this.init(eventData);
+  }
+
+  this.init(eventData);
 };

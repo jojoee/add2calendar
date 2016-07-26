@@ -54,8 +54,7 @@ var singleEventArgs = {
   customId    : 'custom-id'
 };
 var singleEvent = new Add2Calendar(singleEventArgs);
-var singleEventNode = singleEvent.getSingleEventWidgetNode();
-document.querySelector('#single-event').appendChild(singleEventNode);
+singleEvent.createWidget('#single-event');
 
 /* Multi Event */
 var multiEventsArgs = [
@@ -79,8 +78,7 @@ var multiEventsArgs = [
   }
 ];
 var multiEvents = new Add2Calendar(multiEventsArgs);
-var multiEventsNode = multiEvents.getSingleEventWidgetNode();
-document.querySelector('#multi-events').appendChild(multiEventsNode);
+multiEvents.createWidget('#multi-events');
 </script>
 </body>
 </html>
