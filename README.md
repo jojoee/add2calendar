@@ -91,13 +91,14 @@ Apologize me, if I miss something
 
 ## Future Update
 - [ ] Update Google format to [new format](https://developers.google.com/google-apps/calendar/gadgets/event/)
-- [ ] Submit to `bower`
-- [ ] Submit to `npm`
+- [x] Submit to `bower`
+- [x] Submit to `npm`
 - [ ] Wordpress plugin
 - [ ] `start` and `end` parameters can be `Date` objet
 - [ ] Refactor
 - [ ] Unit test
 - [ ] Create default value of `end` variable (should be equal `start` + 1 day)
+- [ ] Support ES6 (module export)
 
 ## Format and others
 - [escape() vs encodeURI()](http://stackoverflow.com/questions/75980/when-are-you-supposed-to-use-escape-instead-of-encodeuri-encodeuricomponent)
