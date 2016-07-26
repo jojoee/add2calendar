@@ -35,6 +35,7 @@ var Add2Calendar = function(eventData) {
    * TODO
    * - validate `eventData`
    * - require only `start`
+   * - validate both single and multi
    * 
    * @see http://stackoverflow.com/questions/5812220/how-to-validate-a-date
    * @see http://stackoverflow.com/questions/1353684/detecting-an-invalid-date-date-instance-in-javascript
@@ -43,7 +44,18 @@ var Add2Calendar = function(eventData) {
    * @return {Boolean}      [description]
    */
   this.isValidEventData = function(eventData) {
-    return true;
+    if (this.isSingleEvent) {
+      // HACK
+      return true;
+
+    } else {
+      if (eventData.length > 0) {
+        // HACK
+        return true;
+      }
+    }
+
+    return false;
   }
 
   this.isObjectType = function(obj, type) {
@@ -97,10 +109,38 @@ var Add2Calendar = function(eventData) {
     return '<a class="' + customClass + '" target="_blank" href="' + url + '">' + text + '</a>';
   }
 
+  /**
+   * [getLiHtml description]
+   *
+   * @see http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers
+   * 
+   * @param  {[type]} text        [description]
+   * @param  {[type]} url         [description]
+   * @param  {[type]} customClass [description]
+   * @return {[type]}             [description]
+   */
   this.getLiHtml = function(text, url, customClass) {
-    var result = '';
+    var result = '',
+      isValid = false;
 
+    // Validate
     if (url) {
+      if (customClass === 'ical' || customClass === 'outlook') {
+        isValid = true;
+
+      } else {
+        var urlLength = url.length;
+
+        if (urlLength <= 20000) {
+          isValid = true;
+
+        } else {
+          console.log('Url longer than 2000');
+        }
+      }
+    }
+
+    if (isValid) {
       var linkHtml = this.getLinkHtml(text, url, 'icon-' + customClass);
       result = '<li class="a2cldr-item a2cldr-' + customClass + '">' + linkHtml + '</li>';
     }
