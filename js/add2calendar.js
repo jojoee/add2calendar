@@ -75,12 +75,10 @@ var Add2Calendar = function(eventData) {
     return this.isObjectType(obj, 'Date');
   }
 
-  // UNUSED
   this.isArray = function(obj) {
     return this.isObjectType(obj, 'Array');
   }
 
-  // UNUSED
   this.isFunc = function(obj) {
     return this.isObjectType(obj, 'Function');
   }
@@ -414,21 +412,29 @@ var Add2Calendar = function(eventData) {
   }
 
   // PUBLIC
-  this.createWidget = function(selector) {
+  this.createWidget = function(selector, cb) {
     this.selector = selector;
     this.eWidget = document.querySelector(selector);
 
     var node = this.getWidgetNode();
     this.eWidget.appendChild(node);
+
+    if (this.isFunc(cb)) {
+      cb();
+    }
   }
 
   // PUBLIC
   // UNUSED
-  this.updateWidget = function(eventData) {
+  this.updateWidget = function(eventData, cb) {
     this.update(eventData);
 
     var ele = document.querySelector(this.selector + ' .a2cldr-list');
     ele.innerHTML = this.getEventListItemsHtml();
+
+    if (this.isFunc(cb)) {
+      cb();
+    }
   }
   
   /*================================================================ Init & Others

@@ -78,7 +78,9 @@ var multiEventsArgs = [
   }
 ];
 var multiEvents = new Add2Calendar(multiEventsArgs);
-multiEvents.createWidget('#multi-events');
+multiEvents.createWidget('#multi-events', function(){
+  console.log('Widget has been created');
+});
 </script>
 </body>
 </html>

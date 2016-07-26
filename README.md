@@ -117,6 +117,7 @@ Apologize me, if I miss something
 - [ ] Create default value of `end` variable (should be equal `start` + 1 day)
 - [ ] Support ES6 (module export)
 - [ ] Support `customClass` and `customId`
+- [x] Support callback function
 
 ## Format and others
 - [escape() vs encodeURI()](http://stackoverflow.com/questions/75980/when-are-you-supposed-to-use-escape-instead-of-encodeuri-encodeuricomponent)
