@@ -20,6 +20,26 @@ var Add2Calendar = function(eventData) {
   */
   
   /**
+   * [mergeObj description]
+   * One deep level
+   * UNUSED
+   *
+   * @see http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
+   * 
+   * @param  {[type]} obj1 [description]
+   * @param  {[type]} obj2 [description]
+   * @return {[type]}      [description]
+   */
+  this.mergeObj = function(obj1, obj2) {
+    var result = {}
+
+    for (var attr in obj1) { result[attr] = obj1[attr]; }
+    for (var attr in obj2) { result[attr] = obj2[attr]; }
+
+    return result;
+  }
+  
+  /**
    * [formatTime description]
    * 
    * @param  {[type]} date [description]
@@ -400,7 +420,9 @@ var Add2Calendar = function(eventData) {
   }
 
   this.getWidgetNode = function() {
-    var html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">Add to Calendar</span>';
+    var html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">'
+    html += this.add2calendarBtnTextMap[this.lang];
+    html += '</span>';
     html += this.getEventListHtml();
 
     var result = document.createElement('div');
@@ -436,6 +458,11 @@ var Add2Calendar = function(eventData) {
       cb();
     }
   }
+
+  // PUBLIC
+  this.setLang = function(str) {
+    this.lang = str;
+  }
   
   /*================================================================ Init & Others
   */
@@ -452,15 +479,6 @@ var Add2Calendar = function(eventData) {
     'es': 'Añadir al Calendario',
     'fr': 'Ajouter au calendrier',
     'ru': 'Добавить в календарь'
-  };
-
-  this.defaultEventData = {
-    title       : '',
-    location    : '',
-    description : '',
-    customClass : '',
-    customId    : this.textDomain,
-    lang        : 'en' // country code
   };
   
   this.eventData;
@@ -488,13 +506,12 @@ var Add2Calendar = function(eventData) {
 
       return false;
     }
-    
-    // TODO
-    // merge `eventData` with `defaultEventData`
+
     this.eventData = eventData;
     
     this.selector = '';
     this.eWidget = null;
+    this.lang = 'en';
 
     this.googleUrl = '';
     this.iCalUrl = ''; // iCal and Outlook
