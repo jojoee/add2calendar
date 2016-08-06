@@ -1,4 +1,6 @@
 # Add2Calendar
+[![Bower Version](https://img.shields.io/bower/v/add2calendar.svg)](https://bower.io/search/?q=add2calendar) [![Npm Version](https://img.shields.io/npm/v/add2calendar.svg)](https://www.npmjs.com/package/add2calendar) [![Release Version](https://img.shields.io/github/release/jojoee/add2calendar.svg)](https://github.com/jojoee/add2calendar/releases) [![Downloads](https://img.shields.io/npm/dt/add2calendar.svg)](https://github.com/jojoee/add2calendar/archive/master.zip)
+
 Allow you to add event to `calendar` easier
 
 [![Add2Calendar - Screenshot](https://raw.githubusercontent.com/jojoee/add2calendar/gh-pages/screenshot/screenshot1.jpg "Add2Calendar - Screenshot")](http://jojoee.github.io/add2calendar/)
