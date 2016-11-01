@@ -535,7 +535,9 @@ var Add2Calendar = function(eventData) {
     this.updateGoogleUrl();
     this.updateICalUrl();
     this.updateYahooUrl();
-    this.updateOutlookOnlineUrl();
+
+    // disabled@01112016-1146 - cause it's not working
+    // this.updateOutlookOnlineUrl();
   };
 
   this.init = function(eventData) {
