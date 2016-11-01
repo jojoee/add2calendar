@@ -39,7 +39,7 @@ var Add2Calendar = function(eventData) {
     for (var attr in obj2) { result[attr] = obj2[attr]; }
 
     return result;
-  }
+  };
   
   /**
    * [formatTime description]
@@ -49,7 +49,7 @@ var Add2Calendar = function(eventData) {
    */
   this.formatTime = function(date) {
     return date.toISOString().replace(/-|:|\.\d+/g, '');
-  }
+  };
     
   /**
    * [isValidEventData description]
@@ -78,11 +78,11 @@ var Add2Calendar = function(eventData) {
     }
 
     return false;
-  }
+  };
 
   this.isObjectType = function(obj, type) {
     return Object.prototype.toString.call(obj) === '[object ' + type + ']';
-  }
+  };
 
   /**
    * [isDateObject description]
@@ -95,15 +95,15 @@ var Add2Calendar = function(eventData) {
    */
   this.isDateObject = function(obj) {
     return this.isObjectType(obj, 'Date');
-  }
+  };
 
   this.isArray = function(obj) {
     return this.isObjectType(obj, 'Array');
-  }
+  };
 
   this.isFunc = function(obj) {
     return this.isObjectType(obj, 'Function');
-  }
+  };
 
   /**
    * [serialize description]
@@ -123,11 +123,11 @@ var Add2Calendar = function(eventData) {
     }
 
     return str.join('&');
-  }
+  };
 
   this.getLinkHtml = function(text, url, customClass) {
     return '<a class="' + customClass + '" target="_blank" href="' + url + '">' + text + '</a>';
-  }
+  };
 
   /**
    * [getLiHtml description]
@@ -166,7 +166,7 @@ var Add2Calendar = function(eventData) {
     }
 
     return result;
-  }
+  };
 
   /*================================================================ Google
   */
@@ -190,15 +190,15 @@ var Add2Calendar = function(eventData) {
 
   this.getGoogleUrl = function() {
     return this.googleUrl;
-  }
+  };
 
   this.getGoogleLiHtml = function() {
     return this.getLiHtml('Google', this.googleUrl, 'google');
-  }
+  };
 
   this.openGoogle = function() {
     window.open(this.googleUrl);
-  }
+  };
 
   /*================================================================ iCal / Outlook
   */
@@ -261,34 +261,34 @@ var Add2Calendar = function(eventData) {
       
       this.iCalUrl = encodeURI('data:text/calendar;charset=utf8,' + iCalData);
     }
-  }
+  };
 
   this.getICalUrl = function() {
     return this.iCalUrl;
-  }
+  };
 
   this.getICalLiHtml = function() {
     return this.getLiHtml('iCal', this.iCalUrl, 'ical');
-  }
+  };
 
   this.openICal = function() {
     window.open(this.iCalUrl);
-  }
+  };
 
   // Same as getICalUrl
   this.getOutlookUrl = function() {
     return this.iCalUrl;
-  }
+  };
 
   // Same as getICalLiHtml
   this.getOutlookLiHtml = function() {
     return this.getLiHtml('Outlook', this.iCalUrl, 'outlook');
-  }
+  };
 
   // Same as openICal
   this.openOutlook = function() {
     window.open(this.iCalUrl);
-  }
+  };
 
   /*================================================================ Outlook Online
   */
@@ -317,19 +317,19 @@ var Add2Calendar = function(eventData) {
 
       this.outlookOnlineUrl = 'http://calendar.live.com/calendar/calendar.aspx?rru=addevent&' + this.serialize(outlookOnlineArgs);
     }
-  }
+  };
 
   this.getOutlookOnlineUrl = function() {
     return this.outlookOnlineUrl;
-  }
+  };
 
   this.getOutlookOnlineLiHtml = function() {
     return this.getLiHtml('Outlook Online', this.outlookOnlineUrl, 'outlook-online');
-  }
+  };
 
   this.openOutlookOnline = function() {
     window.open(this.outlookOnlineUrl);
-  }
+  };
 
   /*================================================================ Yahoo
   */
@@ -360,19 +360,19 @@ var Add2Calendar = function(eventData) {
 
       this.yahooUrl = 'https://calendar.yahoo.com/?v=60&' + this.serialize(yahooArgs);
     }
-  }
+  };
 
   this.getYahooUrl = function() {
     return this.yahooUrl;
-  }
+  };
 
   this.getYahooLiHtml = function() {
     return this.getLiHtml('Yahoo!', this.yahooUrl, 'yahoo');
-  }
+  };
 
   this.openYahoo = function() {
     window.open(this.yahooUrl);
-  }
+  };
 
   /*================================================================ Widget
   */
@@ -384,7 +384,7 @@ var Add2Calendar = function(eventData) {
     html += '</ul>';
 
     return html;
-  }
+  };
 
   this.getEventListItemsHtml = function() {
     var html = '';
@@ -396,7 +396,7 @@ var Add2Calendar = function(eventData) {
     html += this.getYahooLiHtml();
 
     return html;
-  }
+  };
 
   // UNUSED
   // QUITE DUPLICATE
@@ -407,7 +407,7 @@ var Add2Calendar = function(eventData) {
     html += '</ul>';
 
     return html;
-  }
+  };
 
   // UNUSED
   // QUITE DUPLICATE
@@ -419,7 +419,7 @@ var Add2Calendar = function(eventData) {
     html += '</li>';
 
     return html;
-  }
+  };
 
   this.getWidgetNode = function() {
     var html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">'
@@ -433,7 +433,7 @@ var Add2Calendar = function(eventData) {
     result.id = this.textDomain;
 
     return result;
-  }
+  };
 
   /*================================================================ API (Public)
   */
@@ -448,11 +448,11 @@ var Add2Calendar = function(eventData) {
     if (this.isFunc(cb)) {
       cb();
     }
-  }
+  };
 
   this.setLang = function(str) {
     this.lang = str;
-  }
+  };
 
   // UNUSED
   this.update = function(eventData) {
@@ -469,7 +469,7 @@ var Add2Calendar = function(eventData) {
     if (this.isFunc(cb)) {
       cb();
     }
-  }
+  };
 
   /*================================================================ Global var
   */
@@ -510,7 +510,7 @@ var Add2Calendar = function(eventData) {
     this.updateICalUrl();
     this.updateYahooUrl();
     this.updateOutlookOnlineUrl();
-  }
+  };
 
   this.init = function(eventData) {
     this.isSingleEvent = ! this.isArray(eventData);
