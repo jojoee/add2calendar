@@ -3,7 +3,7 @@
 
 Allow you to add event to `calendar` easier
 
-[![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/gh-pages/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/)
+[![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/master/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/)
 
 ## Feature
 - [x] Single Event: Google
