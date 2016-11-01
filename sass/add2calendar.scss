@@ -63,6 +63,8 @@ $grey: #f3f3f3;
 }
 
 .a2cldr-list {
+  position: relative;
+  z-index: 2;
   padding: 0 12px;
   display: none;
   background-color: $white;

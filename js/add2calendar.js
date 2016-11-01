@@ -4,7 +4,7 @@ function hasClass(ele, cls) {
   return (' ' + ele.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
 
-function onA2cldrClicked(ele) {
+function a2cldrOnButtonsClicked(ele) {
   var activeClassName = 'active';
   var parent = ele.parentNode;
 
@@ -447,7 +447,7 @@ var Add2Calendar = function(eventData) {
   };
 
   this.getWidgetNode = function() {
-    var html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">'
+    var html = '<span class="a2cldr-btn" onclick="a2cldrOnButtonsClicked(this);">'
     html += this.getWidgetBtnText();
     html += '</span>';
     html += this.getEventListHtml();
