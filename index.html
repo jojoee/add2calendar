@@ -7,7 +7,11 @@
 <title>Add2Calendar</title>
 <link rel="stylesheet" href="css/add2calendar.css">
 <style>
-* { margin: 0; padding: 0; }
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #fff;
 }
@@ -16,24 +20,52 @@ body {
   padding: 120px;
 }
 
-#single-event,
-#multi-events {
-  float: left;
-  margin: 12px;
+.event-wrap {
+  border: 1px solid #eee;
+  padding: 6px;
+  margin: 6px;
+  clear: both;
+}
+
+.title {
+  font-family: monospace;
+  padding-bottom: 12px;
+}
+
+.event-box {
+  padding-bottom: 12px;
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div id="single-event">
+  <div class="event-wrap">
+    <div class="title">
+      Single event
+    </div>
+
+    <div class="event-box" id="single-normal"></div>
+    <div class="event-box" id="single-set-lang"></div>
+    <div class="event-box" id="single-set-button-text"></div>
+    <div class="event-box" id="single-reset-option"></div>
   </div>
 
-  <div id="multi-events">
+  <div class="event-wrap">
+    <div class="title">
+      Multi events
+    </div>
+
+    <div class="event-box" id="multi-normal"></div>
+    <div class="event-box" id="multi-set-lang"></div>
+    <div class="event-box" id="multi-set-button-text"></div>
+    <div class="event-box" id="multi-reset-option"></div>
   </div>
 <div>
 <script src="js/add2calendar.js"></script>
 <script>
-/* Single Event */
+/*================================ Single Event
+*/
+
 var startDate,
   endDate;
 
@@ -52,9 +84,27 @@ var singleEventArgs = {
   description : 'Welcome everyone to simple plugin that allow you to add event to calendar easily.'
 };
 var singleEvent = new Add2Calendar(singleEventArgs);
-singleEvent.createWidget('#single-event');
 
-/* Multi Event */
+// widget 1 - normal
+singleEvent.createWidget('#single-normal', function() {
+  console.log('#single-normal widget has been created');
+});
+
+// widget 2 - custom lang
+singleEvent.setOption({ lang: 'cn' });
+singleEvent.createWidget('#single-set-lang');
+
+// widget 3 - custom button text
+singleEvent.setOption({ buttonText: 'Custom button text' });
+singleEvent.createWidget('#single-set-button-text');
+
+// widget 4 - reset option
+singleEvent.resetOption();
+singleEvent.createWidget('#single-reset-option');
+
+/*================================ Multiple events
+*/
+
 var multiEventsArgs = [
   {
     title       : 'Add2Calendar plugin event 1',
@@ -71,11 +121,24 @@ var multiEventsArgs = [
     description : 'Event description 2'
   }
 ];
+
+// widget 1 - normal
 var multiEvents = new Add2Calendar(multiEventsArgs);
-multiEvents.setLang('cn');
-multiEvents.createWidget('#multi-events', function() {
-  console.log('Widget has been created');
+multiEvents.createWidget('#multi-normal', function() {
+  console.log('#multi-normal widget has been created');
 });
+
+// widget 2 - custom lang
+multiEvents.setOption({ lang: 'cn' });
+multiEvents.createWidget('#multi-set-lang');
+
+// widget 3 - custom button text
+multiEvents.setOption({ buttonText: 'Custom button text' });
+multiEvents.createWidget('#multi-set-button-text');
+
+// widget 4 - reset option
+multiEvents.resetOption();
+multiEvents.createWidget('#multi-reset-option');
 </script>
 </body>
 </html>
