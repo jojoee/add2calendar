@@ -24,7 +24,6 @@ var Add2Calendar = function(eventData) {
   /**
    * [mergeObj description]
    * One deep level
-   * UNUSED
    *
    * @see http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
    * 
@@ -449,7 +448,7 @@ var Add2Calendar = function(eventData) {
 
   this.getWidgetNode = function() {
     var html = '<span class="a2cldr-btn" onclick="onA2cldrClicked(this);">'
-    html += this.add2calendarBtnTextMap[this.lang];
+    html += this.getWidgetBtnText();
     html += '</span>';
     html += this.getEventListHtml();
 
@@ -457,6 +456,14 @@ var Add2Calendar = function(eventData) {
     result.innerHTML = html;
     result.className = this.textDomain;
     result.id = this.textDomain;
+
+    return result;
+  };
+
+  this.getWidgetBtnText = function() {
+    var result = (this.option.buttonText)
+      ? this.option.buttonText
+      : this.add2calendarBtnTextMap[this.option.lang];
 
     return result;
   };
@@ -476,16 +483,22 @@ var Add2Calendar = function(eventData) {
     }
   };
 
-  this.setLang = function(str) {
-    this.lang = str;
+  this.setOption = function(option) {
+    this.userOption = option;
+    this.option = this.mergeObj(this.defaultOption, this.userOption);
   };
 
-  // UNUSED
+  this.resetOption = function() {
+    this.option = this.defaultOption;
+  };
+
+  /*================================================================ API (Public) - In progress
+  */
+
   this.update = function(eventData) {
     this.init(eventData);
   };
 
-  // UNUSED
   this.updateWidget = function(eventData, cb) {
     this.update(eventData);
 
@@ -516,12 +529,16 @@ var Add2Calendar = function(eventData) {
 
   this.isSingleEvent;
 
-  // option
+  // constructor parameter
   this.eventData;
-  
+
   this.selector;
   this.eWidget;
-  this.lang;
+
+  // option
+  this.defaultOption;
+  this.userOption;
+  this.option;
 
   this.googleUrl;
   this.iCalUrl; // iCal and Outlook
@@ -553,7 +570,12 @@ var Add2Calendar = function(eventData) {
     
     this.selector = '';
     this.eWidget = null;
-    this.lang = 'en';
+
+    this.defaultOption = {
+      lang: 'en',
+      buttonText: '',
+    };
+    this.option = this.defaultOption;
 
     this.googleUrl = '';
     this.iCalUrl = ''; // iCal and Outlook
