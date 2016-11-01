@@ -1,3 +1,5 @@
+// prefix: a2cldr
+
 function hasClass(ele, cls) {
   return (' ' + ele.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
@@ -433,7 +435,9 @@ var Add2Calendar = function(eventData) {
     return result;
   }
 
-  // PUBLIC
+  /*================================================================ API (Public)
+  */
+
   this.createWidget = function(selector, cb) {
     this.selector = selector;
     this.eWidget = document.querySelector(selector);
@@ -446,7 +450,15 @@ var Add2Calendar = function(eventData) {
     }
   }
 
-  // PUBLIC
+  this.setLang = function(str) {
+    this.lang = str;
+  }
+
+  // UNUSED
+  this.update = function(eventData) {
+    this.init(eventData);
+  };
+
   // UNUSED
   this.updateWidget = function(eventData, cb) {
     this.update(eventData);
@@ -459,14 +471,9 @@ var Add2Calendar = function(eventData) {
     }
   }
 
-  // PUBLIC
-  this.setLang = function(str) {
-    this.lang = str;
-  }
-  
-  /*================================================================ Init & Others
+  /*================================================================ Global var
   */
-  
+ 
   this.textDomain = 'a2cldr';
   this.add2calendarBtnTextMap = {
     'en': 'Add to Calendar',
@@ -480,16 +487,23 @@ var Add2Calendar = function(eventData) {
     'fr': 'Ajouter au calendrier',
     'ru': 'Добавить в календарь'
   };
-  
-  this.eventData;
+
   this.isSingleEvent;
+
+  // option
+  this.eventData;
+  
   this.selector;
   this.eWidget;
+  this.lang;
 
   this.googleUrl;
   this.iCalUrl; // iCal and Outlook
   this.yahooUrl;
   this.outlookOnline;
+ 
+  /*================================================================ Init & Others
+  */
 
   this.updateAllCalendars = function() {
     this.updateGoogleUrl();
@@ -519,11 +533,7 @@ var Add2Calendar = function(eventData) {
     this.outlookOnline = '';
 
     this.updateAllCalendars();
-  }
-
-  this.update = function(eventData) {
-    this.init(eventData);
-  }
+  };
 
   this.init(eventData);
 };
