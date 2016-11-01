@@ -3,16 +3,23 @@
 
 Allow you to add event to `calendar` easier
 
-[![Add2Calendar - Screenshot](https://raw.githubusercontent.com/jojoee/add2calendar/gh-pages/screenshot/screenshot1.jpg "Add2Calendar - Screenshot")](http://jojoee.github.io/add2calendar/)
+[![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/gh-pages/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/)
 
 ## Feature
 - [x] Single Event: Google
 - [x] Single Event: iCal
 - [x] Single Event: Outlook
-- [x] Single Event: Outlook Online
+- [x] Single Event: Outlook Online (disabled since v1.1.0)
 - [x] Single Event: Yahoo!
 - [x] Multi Event: iCal
 - [x] Multi Event: Outlook
+
+## Compatible with all browsers:
+- Google Chrome 19+
+- Mozilla Firefox 3.5+
+- Safari 6+
+- Internet Explorer 10+
+- Opera 11.5
 
 ## Getting Started
 ```
@@ -39,7 +46,7 @@ var singleEventArgs = {
   description : 'Event description'
 };
 var singleEvent = new Add2Calendar(singleEventArgs);
-singleEvent.createWidget('#single-event');
+singleEvent.createWidget('#single-normal');
 ```
 
 ```
@@ -99,6 +106,16 @@ Apologize me, if I miss something
 - Yahoo!: OK
 ```
 
+## Important changelog
+```
+1.1.0
+- Remove `setLang` API (using `setOption` instead)
+- Remove outlook-online from the list
+
+1.0.0
+- First release
+```
+
 ## Future Update
 - [ ] Update Google format to [new format](https://developers.google.com/google-apps/calendar/gadgets/event/)
 - [x] Submit to `bower`
@@ -109,8 +126,14 @@ Apologize me, if I miss something
 - [ ] Unit test
 - [ ] Create default value of `end` variable (should be equal `start` + 1 day)
 - [ ] Support ES6 (module export)
+- [ ] Complete `DocBlockr`
 - [x] Support callback function
 - [x] Set language
+- [x] Support `download` attr
+- [ ] Refactor
+- [x] Refactor `option` parameter
+- [ ] Implement [tape](https://github.com/substack/tape)
+- [ ] Separate utilitie function of out main file
 
 ## Format and others
 - [escape() vs encodeURI()](http://stackoverflow.com/questions/75980/when-are-you-supposed-to-use-escape-instead-of-encodeuri-encodeuricomponent)
