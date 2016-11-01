@@ -526,7 +526,7 @@ var Add2Calendar = function(eventData) {
   this.googleUrl;
   this.iCalUrl; // iCal and Outlook
   this.yahooUrl;
-  this.outlookOnline;
+  this.outlookOnlineUrl;
  
   /*================================================================ Init & Others
   */
@@ -556,7 +556,7 @@ var Add2Calendar = function(eventData) {
     this.googleUrl = '';
     this.iCalUrl = ''; // iCal and Outlook
     this.yahooUrl = '';
-    this.outlookOnline = '';
+    this.outlookOnlineUrl = '';
 
     this.updateAllCalendars();
   };
