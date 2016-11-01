@@ -124,9 +124,30 @@ var Add2Calendar = function(eventData) {
 
     return str.join('&');
   };
+  
+  /**
+   * [replaceSpecialCharacterAndSpaceWithHyphen description]
+   *
+   * @see http://stackoverflow.com/questions/18936483/regex-for-replacing-all-special-characters-and-spaces-in-a-string-with-hyphens
+   * 
+   * @param  {[type]} str [description]
+   * @return {[type]}     [description]
+   */
+  this.replaceSpecialCharacterAndSpaceWithHyphen = function(str) {
+    return str.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
+  };
 
-  this.getLinkHtml = function(text, url, customClass) {
-    return '<a class="' + customClass + '" target="_blank" href="' + url + '">' + text + '</a>';
+  this.getLinkHtml = function(text, url, customClass, isEnableDownloadAttr) {
+    if (typeof isEnableDownloadAttr === 'undefined') { isEnableDownloadAttr = false; }
+    var downloadAttr = '';
+
+    if (isEnableDownloadAttr) {
+      var fileName = 'add2Calendar-' + this.replaceSpecialCharacterAndSpaceWithHyphen(text).toLowerCase() + '-' + this.getCurrentUtcTimestamp();
+
+      downloadAttr = ' download="' + fileName + '" ';
+    }
+
+    return '<a ' + downloadAttr + ' class="' + customClass + '" target="_blank" href="' + url + '">' + text + '</a>';
   };
 
   /**
@@ -134,12 +155,13 @@ var Add2Calendar = function(eventData) {
    *
    * @see http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers
    * 
-   * @param  {[type]} text        [description]
-   * @param  {[type]} url         [description]
-   * @param  {[type]} customClass [description]
-   * @return {[type]}             [description]
+   * @param  {[type]}  text                 [description]
+   * @param  {[type]}  url                  [description]
+   * @param  {[type]}  customClass          [description]
+   * @param  {Boolean} isEnableDownloadAttr [description]
+   * @return {[type]}                       [description]
    */
-  this.getLiHtml = function(text, url, customClass) {
+  this.getLiHtml = function(text, url, customClass, isEnableDownloadAttr) {
     var result = '',
       isValid = false;
 
@@ -161,11 +183,15 @@ var Add2Calendar = function(eventData) {
     }
 
     if (isValid) {
-      var linkHtml = this.getLinkHtml(text, url, 'icon-' + customClass);
+      var linkHtml = this.getLinkHtml(text, url, 'icon-' + customClass, isEnableDownloadAttr);
       result = '<li class="a2cldr-item a2cldr-' + customClass + '">' + linkHtml + '</li>';
     }
 
     return result;
+  };
+
+  this.getCurrentUtcTimestamp = function() {
+    return Date.now();
   };
 
   /*================================================================ Google
@@ -268,7 +294,7 @@ var Add2Calendar = function(eventData) {
   };
 
   this.getICalLiHtml = function() {
-    return this.getLiHtml('iCal', this.iCalUrl, 'ical');
+    return this.getLiHtml('iCal', this.iCalUrl, 'ical', true);
   };
 
   this.openICal = function() {
@@ -282,7 +308,7 @@ var Add2Calendar = function(eventData) {
 
   // Same as getICalLiHtml
   this.getOutlookLiHtml = function() {
-    return this.getLiHtml('Outlook', this.iCalUrl, 'outlook');
+    return this.getLiHtml('Outlook', this.iCalUrl, 'outlook', true);
   };
 
   // Same as openICal
