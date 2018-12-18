@@ -3,7 +3,7 @@
 
 Allow you to add event to `calendar` easier
 
-[![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/master/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/)
+[![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/master/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/) [![Greenkeeper badge](https://badges.greenkeeper.io/jojoee/add2calendar.svg)](https://greenkeeper.io/)
 
 ## Feature
 - [x] Single Event: Google
