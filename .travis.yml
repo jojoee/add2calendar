@@ -1,0 +1,28 @@
+sudo: false
+dist: trusty
+language: node_js
+language: node_js
+node_js:
+  - "4.0.0"
+  - "5.0.0"
+  - "6.0.0"
+  - "7.0.0"
+  - "8.0.0"
+  - "9.0.0"
+  - "9.0.0"
+  - "10.0.0"
+  - "11.0.0"
+  - "12.0.0"
+  - "13.0.0"
+cache:
+  directories:
+    - node_modules
+branches:
+  only:
+    - master
+notifications:
+  email: false
+before_script:
+  - npm prune
+script:
+  - npm run test
