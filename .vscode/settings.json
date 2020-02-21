@@ -1,0 +1,9 @@
+{
+  "standard.autoFixOnSave": false,
+  "standard.enable": false,
+  "editor.formatOnSave": false,
+  "[html]": { "editor.formatOnSave": false, },
+  "[css]": { "editor.formatOnSave": false, },
+  "[scss]": { "editor.formatOnSave": false, },
+  "[js]": { "editor.formatOnSave": false, },
+}

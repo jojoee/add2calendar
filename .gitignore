@@ -2,6 +2,9 @@
 node_modules/
 bower_components/
 
+# log
+npm-debug.log
+
 # Backup
 bk
 bk*

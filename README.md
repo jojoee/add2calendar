@@ -10,6 +10,9 @@ Allow you to add event to `calendar` easier
 [![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/master/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/)
 
 ## Feature
+- Support All Node.js versions 4.0.0, 5.0.0, 6.0.0, 7.0.0, 8.0.0, 9.0.0, 10.0.0, 11.0.0
+- Zero dependency
+- Support ES6 module importing
 - [x] Single Event: Google
 - [x] Single Event: iCal
 - [x] Single Event: Outlook
@@ -39,8 +42,8 @@ Install
 2.3 Install package: `bower install --save add2calendar`
 ```
 
-```
-Example usage
+```javascript
+// Example usage
 
 var singleEventArgs = {
   title       : 'Add2Calendar plugin event',
@@ -127,17 +130,29 @@ Apologize me, if I miss something
 - [ ] Wordpress plugin
 - [ ] `start` and `end` parameters can be `Date` objet
 - [ ] Refactor
-- [ ] Unit test
+- [x] Unit test: happy path
+- [ ] Unit test: failed path
+- [ ] Unit test: automated test on browser environment
+- [ ] Unit test: coverage
 - [ ] Create default value of `end` variable (should be equal `start` + 1 day)
-- [ ] Support ES6 (module export)
+- [x] Support ES6 (module export)
 - [ ] Complete `DocBlockr`
 - [x] Support callback function
 - [x] Set language
 - [x] Support `download` attr
-- [ ] Refactor
 - [x] Refactor `option` parameter
+- [x] Add lint tools
 - [ ] Implement [tape](https://github.com/substack/tape)
-- [ ] Separate utilitie function of out main file
+
+## Development and contribution
+
+```
+nvm install 4.0.0
+nvm use 4.0.0
+npm install
+npm shrinkwrap
+mv ./npm-shrinkwrap.json ./package-lock.json
+```
 
 ## Format and others
 - [escape() vs encodeURI()](http://stackoverflow.com/questions/75980/when-are-you-supposed-to-use-escape-instead-of-encodeuri-encodeuricomponent)
