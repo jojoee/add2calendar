@@ -136,12 +136,14 @@ var Add2Calendar = function(eventData) {
     return str.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
   };
 
-  this.getLinkHtml = function(text, url, customClass, isEnableDownloadAttr) {
+  this.getLinkHtml = function(text, url, customClass, isEnableDownloadAttr, uniqueId) {
     if (typeof isEnableDownloadAttr === 'undefined') { isEnableDownloadAttr = false; }
+    if (typeof uniqueId === 'undefined') { uniqueId = this.getCurrentUtcTimestamp(); }
+
     var downloadAttr = '';
 
     if (isEnableDownloadAttr) {
-      var fileName = 'add2Calendar-' + this.replaceSpecialCharacterAndSpaceWithHyphen(text).toLowerCase() + '-' + this.getCurrentUtcTimestamp();
+      var fileName = 'add2Calendar-' + this.replaceSpecialCharacterAndSpaceWithHyphen(text).toLowerCase() + '-' + uniqueId;
 
       downloadAttr = ' download="' + fileName + '" ';
     }
@@ -160,7 +162,7 @@ var Add2Calendar = function(eventData) {
    * @param  {Boolean} isEnableDownloadAttr [description]
    * @return {[type]}                       [description]
    */
-  this.getLiHtml = function(text, url, customClass, isEnableDownloadAttr) {
+  this.getLiHtml = function(text, url, customClass, isEnableDownloadAttr, uniqueId) {
     var result = '',
       isValid = false;
 
@@ -182,7 +184,7 @@ var Add2Calendar = function(eventData) {
     }
 
     if (isValid) {
-      var linkHtml = this.getLinkHtml(text, url, 'icon-' + customClass, isEnableDownloadAttr);
+      var linkHtml = this.getLinkHtml(text, url, 'icon-' + customClass, isEnableDownloadAttr, uniqueId);
       result = '<li class="a2cldr-item a2cldr-' + customClass + '">' + linkHtml + '</li>';
     }
 
@@ -196,6 +198,9 @@ var Add2Calendar = function(eventData) {
   /*================================================================ Google
   */
 
+  /**
+   * @todo take an arguments and return it instead of doing internal manipulation
+   */
   this.updateGoogleUrl = function() {
     if (this.isSingleEvent) {
       var startDate = this.formatTime(new Date(this.eventData.start)),
@@ -211,6 +216,8 @@ var Add2Calendar = function(eventData) {
 
       this.googleUrl = 'https://www.google.com/calendar/render?action=TEMPLATE&' + this.serialize(googleArgs);
     }
+
+    return this.googleUrl;
   }
 
   this.getGoogleUrl = function() {
@@ -228,6 +235,9 @@ var Add2Calendar = function(eventData) {
   /*================================================================ iCal / Outlook
   */
  
+  /**
+   * @todo take an arguments and return it instead of doing internal manipulation
+   */
   this.updateICalUrl = function() {
     if (this.isSingleEvent) {
       var startDate = this.formatTime(new Date(this.eventData.start)),
@@ -286,6 +296,8 @@ var Add2Calendar = function(eventData) {
       
       this.iCalUrl = encodeURI('data:text/calendar;charset=utf8,' + iCalData);
     }
+
+    return this.iCalUrl;
   };
 
   this.getICalUrl = function() {
@@ -318,6 +330,9 @@ var Add2Calendar = function(eventData) {
   /*================================================================ Outlook Online
   */
   
+  /**
+   * @todo take an arguments and return it instead of doing internal manipulation
+   */
   this.updateOutlookOnlineUrl = function() {
     if (this.isSingleEvent) {
       var startDate = new Date(this.eventData.start),
@@ -342,6 +357,8 @@ var Add2Calendar = function(eventData) {
 
       this.outlookOnlineUrl = 'http://calendar.live.com/calendar/calendar.aspx?rru=addevent&' + this.serialize(outlookOnlineArgs);
     }
+
+    return this.outlookOnlineUrl;
   };
 
   this.getOutlookOnlineUrl = function() {
@@ -359,6 +376,9 @@ var Add2Calendar = function(eventData) {
   /*================================================================ Yahoo
   */
  
+  /**
+   * @todo take an arguments and return it instead of doing internal manipulation
+   */
   this.updateYahooUrl = function() {
     if (this.isSingleEvent) {
       var startDate = this.formatTime(new Date(this.eventData.start));
@@ -385,6 +405,8 @@ var Add2Calendar = function(eventData) {
 
       this.yahooUrl = 'https://calendar.yahoo.com/?v=60&' + this.serialize(yahooArgs);
     }
+
+    return this.yahooUrl;
   };
 
   this.getYahooUrl = function() {
@@ -586,4 +608,9 @@ var Add2Calendar = function(eventData) {
   };
 
   this.init(eventData);
+};
+
+if (typeof module !== 'undefined' &&
+  module.exports != null) {
+  module.exports = Add2Calendar
 };
