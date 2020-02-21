@@ -1,6 +1,6 @@
 // prefix: a2cldr
 
-function hasClass(ele, cls) {
+function a2cldrHasClass(ele, cls) {
   return (' ' + ele.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
 
@@ -8,7 +8,7 @@ function a2cldrOnButtonsClicked(ele) {
   var activeClassName = 'active';
   var parent = ele.parentNode;
 
-  if (hasClass(parent, activeClassName)) {
+  if (a2cldrHasClass(parent, activeClassName)) {
     parent.classList.remove(activeClassName);
 
   } else {
