@@ -4,16 +4,6 @@ language: node_js
 language: node_js
 node_js:
   - "4.0.0"
-  - "5.0.0"
-  - "6.0.0"
-  - "7.0.0"
-  - "8.0.0"
-  - "9.0.0"
-  - "9.0.0"
-  - "10.0.0"
-  - "11.0.0"
-  - "12.0.0"
-  - "13.0.0"
 cache:
   directories:
     - node_modules
@@ -22,6 +12,14 @@ branches:
     - master
 notifications:
   email: false
+# https://stackoverflow.com/questions/23371542/how-do-i-configure-travis-ci-to-use-the-correct-time-zone-for-a-rails-app
+before_install:
+  - export TZ=Asia/Bangkok
+# Tell npm to ignore package-lock.json to avoid making local file
+# https://github.com/cfpb/development/issues/183
+install:
+  - npm config set package-lock false
+  - npm install
 before_script:
   - npm prune
 script:
