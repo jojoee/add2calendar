@@ -20,6 +20,7 @@
   "devDependencies": {
     "browser-sync": "2.10.1",
     "chai": "3.5.0",
+    "eslint": "4.19.1",
     "gulp": "3.9.0",
     "gulp-autoprefixer": "3.1.0",
     "gulp-notify": "2.2.0",
@@ -28,6 +29,7 @@
     "mocha": "2.5.3"
   },
   "scripts": {
+    "lint": "eslint js test --env mocha",
     "prestart": "bower install && npm install",
     "start": "gulp default",
     "test": "mocha test --reporter spec --recursive",
