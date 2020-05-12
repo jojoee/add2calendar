@@ -148,7 +148,8 @@ Apologize me, if I miss something
 
 ```
 nvm install 4.0.0
-nvm use 4.0.0
+nvm install 4.0.0 && nvm use 4.0.0
+# or "nvm install 11.15.0 && nvm use 11.15.0"
 npm install
 npm shrinkwrap
 mv ./npm-shrinkwrap.json ./package-lock.json
