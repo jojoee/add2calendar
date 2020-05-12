@@ -30,7 +30,6 @@
   },
   "scripts": {
     "lint": "eslint js test --env mocha",
-    "prestart": "bower install && npm install",
     "start": "gulp default",
     "test": "mocha test --reporter spec --recursive",
     "test.watch": "mocha test --reporter spec --recursive --watch"
