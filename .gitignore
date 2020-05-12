@@ -5,6 +5,10 @@ bower_components/
 # log
 npm-debug.log
 
+# lock
+yarn.lock
+package-lock.json
+
 # Backup
 bk
 bk*
