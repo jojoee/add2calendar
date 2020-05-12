@@ -194,7 +194,7 @@ describe('Add2Calendar: single event', function() {
   });
 
   it('e2e', function() {
-    expect(event.updateGoogleUrl()).to.equals('https://www.google.com/calendar/render?action=TEMPLATE&text=Add2Calendar%20plugin%20event&dates=20200228T080042Z%2F20200229T080042Z&location=Bangkok%2C%20Thailand&details=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.&sprop=');
+    expect(event.updateGoogleUrl()).to.equals('https://www.google.com/calendar/render?action=TEMPLATE&text=Add2Calendar%20plugin%20event&dates=20200228T080042Z%2F20200229T080042Z&location=Bangkok%2C%20Thailand&details=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.&ctz=&locale=&sprop=');
     expect(event.updateICalUrl()).to.equals('data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500/%0ADTSTART:20200228T080042Z%0ADTEND:20200229T080042Z%0ASUMMARY:Add2Calendar%20plugin%20event%0ADESCRIPTION:Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR');
     expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T080042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
 
