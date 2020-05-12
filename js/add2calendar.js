@@ -211,8 +211,8 @@ var Add2Calendar = function(eventData) {
         'dates'     : startDate + '/' + endDate,
         'location'  : (this.eventData.location || ''),
         'details'   : (this.eventData.description || ''),
-        'ctz'      : (this.eventData.timezone || ''),
-        'locale'      : (this.eventData.locale || ''),
+        'ctz'       : (this.eventData.timezone || ''),
+        'locale'    : (this.eventData.locale || ''),
         'sprop'     : ''
       };
 
