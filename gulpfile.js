@@ -1,7 +1,7 @@
 var gulp          = require('gulp');
 var notify        = require('gulp-notify');
 var browserSync   = require('browser-sync').create();
-var sass          = require('gulp-sass');
+var less          = require('gulp-less');
 var sourcemaps    = require('gulp-sourcemaps');
 var autoprefixer  = require('gulp-autoprefixer');
 
@@ -28,13 +28,10 @@ function handleError(err) {
  # TASK
  ================================================================*/
 
-gulp.task('sass', function() {
-  return gulp.src('./sass/*.scss')
+gulp.task('less', function() {
+  return gulp.src('./less/*.less')
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      'sourceComments': false,
-      'outputStyle': 'expanded'
-    })).on('error', handleError)
+    .pipe(less())
     .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./css/'))
@@ -49,7 +46,7 @@ gulp.task('serve', function() {
     'open': true
   });
 
-  gulp.watch('./sass/*.scss', ['sass']);  
+  gulp.watch('./less/*.less', ['less']);  
   gulp.watch('./js/*.js', { interval: 500 }).on('change', browserSync.reload);
   gulp.watch('./index.html', { interval: 500 }).on('change', browserSync.reload);
 });

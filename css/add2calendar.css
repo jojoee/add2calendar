@@ -5,7 +5,6 @@
   color: #032c53;
   font-family: sans-serif;
 }
-
 .a2cldr .a2cldr-btn {
   width: 246px;
   height: 46px;
@@ -23,7 +22,6 @@
     */
   box-sizing: border-box;
 }
-
 .a2cldr .a2cldr-btn:before {
   display: inline-block;
   float: right;
@@ -33,21 +31,17 @@
   font-size: 24px;
   line-height: 46px;
 }
-
 .a2cldr.active .a2cldr-btn {
   color: #fff;
   background-color: #032c53;
 }
-
 .a2cldr.active .a2cldr-btn:before {
   font-size: 20px;
   line-height: 44px;
 }
-
 .a2cldr.active .a2cldr-list {
   display: block;
 }
-
 .a2cldr-list {
   position: relative;
   z-index: 2;
@@ -56,25 +50,21 @@
   background-color: #fff;
   box-shadow: 0px 8px 20px 0px #bababa;
 }
-
 .a2cldr-item {
   list-style: none;
   padding: 14px 0;
   border-bottom: 1px solid #f3f3f3;
 }
-
 .a2cldr-item a {
   color: #032c53;
   text-decoration: none;
   width: 100%;
   display: block;
 }
-
 .a2cldr-item a:hover {
   color: #032c53;
   text-decoration: underline;
 }
-
 .a2cldr-item:last-child {
   border-bottom: 0;
 }

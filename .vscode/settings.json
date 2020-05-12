@@ -4,6 +4,6 @@
   "editor.formatOnSave": false,
   "[html]": { "editor.formatOnSave": false, },
   "[css]": { "editor.formatOnSave": false, },
-  "[scss]": { "editor.formatOnSave": false, },
+  "[less]": { "editor.formatOnSave": false, },
   "[js]": { "editor.formatOnSave": false, },
 }
