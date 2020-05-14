@@ -241,6 +241,8 @@ var Add2Calendar = function(eventData) {
    * @todo take an arguments and return it instead of doing internal manipulation
    */
   this.updateICalUrl = function() {
+    var url = typeof document !== 'undefined' ? document.URL : ''; // todo fix it
+
     if (this.isSingleEvent) {
       var startDate = this.formatTime(new Date(this.eventData.start)),
         endDate = this.formatTime(new Date(this.eventData.end));
@@ -251,7 +253,7 @@ var Add2Calendar = function(eventData) {
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
           'BEGIN:VEVENT',
-          'URL:'          + document.URL,
+          'URL:'          + url,
           'DTSTART:'      + startDate,
           'DTEND:'        + endDate,
           'SUMMARY:'      + (this.eventData.title || ''),
@@ -275,7 +277,7 @@ var Add2Calendar = function(eventData) {
 
         var tmp = [
           'BEGIN:VEVENT',
-          'URL:'          + document.URL,
+          'URL:'          + url,
           'DTSTART:'      + startDate,
           'DTEND:'        + endDate,
           'SUMMARY:'      + (data.title || ''),
