@@ -40,6 +40,18 @@ Install
 2.1 Install npm
 2.2 Install bower: `npm install -g bower`
 2.3 Install package: `bower install --save add2calendar`
+
+Import
+// Import via githack
+<link rel="stylesheet" href="https://rawcdn.githack.com/jojoee/add2calendar/v1.1.2/css/add2calendar.css">
+<script src="https://rawcdn.githack.com/jojoee/add2calendar/v1.1.2/js/add2calendar.js"></script>
+// Import via bower
+<link rel="stylesheet" href="./bower_components/add2calendar/css/add2calendar.css">
+<script src="./bower_components/add2calendar/js/add2calendar.js"></script>
+// Import via CommonJS
+const Add2Calendar = require('add2calendar')
+// Import via ES6
+import * as Add2Calendar from "add2calendar"
 ```
 
 ```javascript
@@ -115,6 +127,17 @@ Apologize me, if I miss something
 
 ## Important changelog
 ```
+1.1.2
+- Fix CommonJS importing error
+
+1.1.1
+- Update devDependencies versions
+- Adding prefix to prevent naming collision
+- Support CommonJS importing
+- CI integration
+- Support timezone
+- Replace Sass with Less
+
 1.1.0
 - Remove `setLang` API (using `setOption` instead)
 - Remove outlook-online from the list
@@ -153,6 +176,10 @@ nvm install 4.0.0 && nvm use 4.0.0
 npm install
 npm shrinkwrap
 mv ./npm-shrinkwrap.json ./package-lock.json
+
+# publishing
+npm publish --dry-run
+npm publish
 ```
 
 ## Format and others
