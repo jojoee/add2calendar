@@ -301,6 +301,11 @@ var Add2Calendar = function(eventData) {
       this.iCalUrl = encodeURI('data:text/calendar;charset=utf8,' + iCalData);
     }
 
+    // data is truncated when it contains a "#" character
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
+    // https://en.wikipedia.org/wiki/Percent-encoding
+    this.iCalUrl = this.iCalUrl.replace(/#/g, '%23');
+
     return this.iCalUrl;
   };
 

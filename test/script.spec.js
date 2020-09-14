@@ -237,6 +237,25 @@ describe('Add2Calendar: single event', function() {
   });
 });
 
+describe('Add2Calendar: single event, contains special characters', function() {
+  before(function() {
+    eventArgs = {
+      title: 'Add2Calendar plugin event ;,/?:@&=+$# contains special characters',
+      start: new Date('Fri Feb 28 2020 15:00:42 GMT+0700 (Indochina Time)'),
+      end: new Date('Sat Feb 29 2020 15:00:42 GMT+0700 (Indochina Time)'),
+      location: 'Bangkok, ;,/?:@&=+$# Thailand',
+      description: 'Welcome everyone to simple plugin that ;,/?:@&=+$# allow you to add event to calendar easily.'
+    };
+    event = new Add2Calendar(eventArgs);
+  });
+
+  it('e2e', function() {
+    expect(event.updateGoogleUrl()).to.equals('https://www.google.com/calendar/render?action=TEMPLATE&text=Add2Calendar%20plugin%20event%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20contains%20special%20characters&dates=20200228T080042Z%2F20200229T080042Z&location=Bangkok%2C%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20Thailand&details=Welcome%20everyone%20to%20simple%20plugin%20that%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20allow%20you%20to%20add%20event%20to%20calendar%20easily.&ctz=&locale=&sprop=');
+    expect(event.updateICalUrl()).to.equals('data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500/%0ADTSTART:20200228T080042Z%0ADTEND:20200229T080042Z%0ASUMMARY:Add2Calendar%20plugin%20event%20;,/?:@&=+$%23%20contains%20special%20characters%0ADESCRIPTION:Welcome%20everyone%20to%20simple%20plugin%20that%20;,/?:@&=+$%23%20allow%20you%20to%20add%20event%20to%20calendar%20easily.%0ALOCATION:Bangkok,%20;,/?:@&=+$%23%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR');
+    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20contains%20special%20characters&st=20200228T080042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
+  });
+});
+
 describe('Add2Calendar: multiple events', function() {
   before(function() {
     eventArgs = [
@@ -300,4 +319,9 @@ describe('Add2Calendar: multiple events', function() {
     // getEventListHtml
     // todo
   });
+});
+
+// todo
+describe('Add2Calendar: multiple events', function() {
+
 });
