@@ -127,6 +127,9 @@ Apologize me, if I miss something
 
 ## Important changelog
 ```
+1.1.3
+- Fix iCal, data is truncated when it contains a "#" character
+
 1.1.2
 - Fix CommonJS importing error
 
