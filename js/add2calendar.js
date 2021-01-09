@@ -38,6 +38,17 @@ var Add2Calendar = function(eventData) {
     for (var attr in obj2) { result[attr] = obj2[attr]; }
 
     return result;
+  };  
+
+  /**
+   * @see https://stackoverflow.com/questions/2998784/how-to-output-numbers-with-leading-zeros-in-javascript
+   * @param {Number} number 
+   * @param {Number} size 
+   */
+  this.pad = function(number, size) {
+    var num = number.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
   };
   
   /**
@@ -50,6 +61,19 @@ var Add2Calendar = function(eventData) {
     return date.toISOString().replace(/-|:|\.\d+/g, '');
   };
     
+  /**
+   * [formatTime2 description]
+   * this method ignore timezone
+   * 
+   * @see https://stackoverflow.com/questions/43670062/get-iso-string-from-a-date-without-time-zone
+   * @todo change naming
+   * @param  {Date} date
+   * @return {string} e.g. "20191223", "20191224"
+   */
+  this.formatTime2 = function(date) {
+    return this.pad(date.getFullYear(), 4) + this.pad(date.getMonth() + 1, 2) + this.pad(date.getDate(), 2)
+  };
+
   /**
    * [isValidEventData description]
    * UNUSED, UNCOMPLETE
@@ -203,8 +227,12 @@ var Add2Calendar = function(eventData) {
    */
   this.updateGoogleUrl = function() {
     if (this.isSingleEvent) {
-      var startDate = this.formatTime(new Date(this.eventData.start)),
-        endDate = this.formatTime(new Date(this.eventData.end));
+      var startDate = this.eventData.isAllDay
+        ? this.formatTime2(new Date(this.eventData.start))
+        : this.formatTime(new Date(this.eventData.start));
+      var endDate = this.eventData.isAllDay
+        ? this.formatTime2(new Date(this.eventData.end))
+        : this.formatTime(new Date(this.eventData.end));
 
       var googleArgs = {
         'text'      : (this.eventData.title || ''),
@@ -244,8 +272,12 @@ var Add2Calendar = function(eventData) {
     var url = typeof document !== 'undefined' ? document.URL : ''; // todo fix it
 
     if (this.isSingleEvent) {
-      var startDate = this.formatTime(new Date(this.eventData.start)),
-        endDate = this.formatTime(new Date(this.eventData.end));
+      var startDate = this.eventData.isAllDay
+        ? this.formatTime2(new Date(this.eventData.start))
+        : this.formatTime(new Date(this.eventData.start));
+      var endDate = this.eventData.isAllDay
+        ? this.formatTime2(new Date(this.eventData.end))
+        : this.formatTime(new Date(this.eventData.end));
 
       this.iCalUrl = encodeURI(
         'data:text/calendar;charset=utf8,' +
@@ -271,9 +303,12 @@ var Add2Calendar = function(eventData) {
       var iCalData = [];
       for (i = 0; i < n; i++) {
         var data = this.eventData[i];
-
-        var startDate = this.formatTime(new Date(data.start)),
-          endDate = this.formatTime(new Date(data.end));
+        var startDate = this.eventData.isAllDay
+          ? this.formatTime2(new Date(data.start))
+          : this.formatTime(new Date(data.start));
+        var endDate = this.eventData.isAllDay
+          ? this.formatTime2(new Date(data.end))
+          : this.formatTime(new Date(data.end));
 
         var tmp = [
           'BEGIN:VEVENT',
@@ -390,7 +425,9 @@ var Add2Calendar = function(eventData) {
    */
   this.updateYahooUrl = function() {
     if (this.isSingleEvent) {
-      var startDate = this.formatTime(new Date(this.eventData.start));
+      var startDate = this.eventData.isAllDay
+        ? this.formatTime2(new Date(this.eventData.start))
+        : this.formatTime(new Date(this.eventData.start))
 
       // FIXED: Yahoo! calendar bug
       // 
@@ -399,7 +436,9 @@ var Add2Calendar = function(eventData) {
       var tmp = new Date(this.eventData.end);
       var timezoneOffset = tmp.getTimezoneOffset();
       tmp.setMinutes(tmp.getMinutes() - timezoneOffset);
-      var endDate = this.formatTime(tmp);
+      var endDate = this.eventData.isAllDay
+        ? this.formatTime2(tmp)
+        : this.formatTime(tmp)
 
       var yahooArgs = {
         'view'      : 'd',
