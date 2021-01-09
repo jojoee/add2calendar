@@ -54,8 +54,9 @@ var Add2Calendar = function(eventData) {
   /**
    * [formatTime description]
    * 
-   * @param  {[type]} date [description]
-   * @return {[type]}      [description]
+   * @todo change naming
+   * @param  {Date} date
+   * @return {string} e.g. "20191223T110000Z", "20191223T230000Z"
    */
   this.formatTime = function(date) {
     return date.toISOString().replace(/-|:|\.\d+/g, '');
@@ -375,6 +376,7 @@ var Add2Calendar = function(eventData) {
   */
   
   /**
+   * @todo complete it
    * @todo take an arguments and return it instead of doing internal manipulation
    */
   this.updateOutlookOnlineUrl = function() {
