@@ -39,6 +39,14 @@ describe('Add2Calendar: core', function() {
     expect(event.mergeObj({lang: "en", buttonText: ""}, {buttonText: "Custom button text"})).to.deep.equals({lang: "en", buttonText: "Custom button text"})
   });
 
+  it('pad', function() {
+    // normal case
+    expect(event.pad(2, 1)).to.equals("2")
+    expect(event.pad(8, 2)).to.equals("08")
+    expect(event.pad(3, 3)).to.equals("003")
+    expect(event.pad(12, 4)).to.equals("0012")
+  });
+
   it('formatTime', function() {
     expect(event.formatTime(new Date('Fri Feb 28 2020 13:03:54 GMT+0700 (Indochina Time)'))).to.equals('20200228T060354Z')
     expect(event.formatTime(new Date('Sat Feb 29 2020 13:03:54 GMT+0700 (Indochina Time)'))).to.equals('20200229T060354Z')
@@ -47,6 +55,16 @@ describe('Add2Calendar: core', function() {
     expect(event.formatTime(new Date('Wed Jul 27 2016 19:30:00 GMT+0700 (Indochina Time)'))).to.equals('20160727T123000Z')
     expect(event.formatTime(new Date('Thu Jul 28 2016 10:30:00 GMT+0700 (Indochina Time)'))).to.equals('20160728T033000Z')
     expect(event.formatTime(new Date('Fri Jul 29 2016 19:20:00 GMT+0700 (Indochina Time)'))).to.equals('20160729T122000Z')
+  });
+
+  it('formatTime2', function() {
+    expect(event.formatTime2(new Date('Fri Feb 28 2020 13:03:54 GMT+0700 (Indochina Time)'))).to.equals('20200228')
+    expect(event.formatTime2(new Date('Sat Feb 29 2020 13:03:54 GMT+0700 (Indochina Time)'))).to.equals('20200229')
+    expect(event.formatTime2(new Date('Sat Feb 29 2020 20:03:54 GMT+0700 (Indochina Time)'))).to.equals('20200229')
+    expect(event.formatTime2(new Date('Wed Jul 27 2016 10:30:00 GMT+0700 (Indochina Time)'))).to.equals('20160727')
+    expect(event.formatTime2(new Date('Wed Jul 27 2016 19:30:00 GMT+0700 (Indochina Time)'))).to.equals('20160727')
+    expect(event.formatTime2(new Date('Thu Jul 28 2016 10:30:00 GMT+0700 (Indochina Time)'))).to.equals('20160728')
+    expect(event.formatTime2(new Date('Fri Jul 29 2016 19:20:00 GMT+0700 (Indochina Time)'))).to.equals('20160729')
   });
 
   it('isObjectType', function() {
@@ -234,6 +252,27 @@ describe('Add2Calendar: single event', function() {
 
     // getEventListHtml
     // todo
+  });
+});
+
+describe('Add2Calendar: single event with isAllDay = true', function() {
+  before(function() {
+    eventArgs = {
+      title: 'Add2Calendar plugin event',
+      start: new Date('Fri Feb 28 2020 15:00:42 GMT+0700 (Indochina Time)'),
+      end: new Date('Sat Feb 29 2020 15:00:42 GMT+0700 (Indochina Time)'),
+      location: 'Bangkok, Thailand',
+      description: 'Welcome everyone to simple plugin that allow you to add event to calendar easily.',
+      isAllDay: true
+    };
+    event = new Add2Calendar(eventArgs);
+  });
+
+  it('e2e', function() {
+    // only difference is generated url
+    expect(event.updateGoogleUrl()).to.equals('https://www.google.com/calendar/render?action=TEMPLATE&text=Add2Calendar%20plugin%20event&dates=20200228%2F20200229&location=Bangkok%2C%20Thailand&details=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.&ctz=&locale=&sprop=');
+    expect(event.updateICalUrl()).to.equals('data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500/%0ADTSTART:20200228%0ADTEND:20200229%0ASUMMARY:Add2Calendar%20plugin%20event%0ADESCRIPTION:Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR');
+    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228&et=20200229&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
   });
 });
 
