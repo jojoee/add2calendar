@@ -62,9 +62,18 @@ var singleEventArgs = {
   start       : 'July 27, 2016 10:30',
   end         : 'July 29, 2016 19:20',
   location    : 'Bangkok, Thailand',
-  description : 'Event description'
+  description : 'Event description',
+  isAllDay    : false,
 };
 var singleEvent = new Add2Calendar(singleEventArgs);
+
+// to get actual url
+singleEvent.getGoogleUrl(); // https://www.google.com/calendar/render?action=TEMPLATE&text=Add2Calendar%20plugin%20event...
+singleEvent.getICalUrl(); // data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT...
+singleEvent.getOutlookUrl(); // data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT...
+singleEvent.getYahooUrl(); // https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event...
+
+// render a widget
 singleEvent.createWidget('#single-normal');
 ```
 
@@ -76,12 +85,14 @@ title       : 'Add2Calendar plugin event',
 start       : 'July 27, 2016 10:30',
 end         : 'July 29, 2016 19:20',
 location    : 'Bangkok, Thailand',
-description : 'Event description.'
+description : 'Event description.',
+isAllDay    : false, // when you use "isAllDay" then "end" will be ignored
 
 ---- Default
 title       : ''
 location    : ''
 description : ''
+isAllDay    : false
 
 ---- Type
 title       : <string>
@@ -89,6 +100,7 @@ location    : <string>
 start       : <string> (date format) (required)
 end         : <string> (date format) (required)
 description : <string>
+isAllDay    : <boolean>
 ```
 
 ## Why this plugin
@@ -169,6 +181,9 @@ Apologize me, if I miss something
 - [x] Refactor `option` parameter
 - [x] Add lint tools
 - [ ] Implement [tape](https://github.com/substack/tape)
+- [ ] Support Office 365
+- [ ] Support https://outlook.live.com/
+- [ ] Yahoo, seems to be broken at 2021/01/09
 
 ## Development and contribution
 
