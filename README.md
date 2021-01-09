@@ -86,7 +86,7 @@ start       : 'July 27, 2016 10:30',
 end         : 'July 29, 2016 19:20',
 location    : 'Bangkok, Thailand',
 description : 'Event description.',
-isAllDay    : false, // when you use "isAllDay" then "end" will be ignored
+isAllDay    : false,
 
 ---- Default
 title       : ''
