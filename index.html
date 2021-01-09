@@ -19,7 +19,6 @@ body {
 .wrap {
   margin: 0 auto;
   max-width: 600px;
-  padding-top: 60px;
 }
 
 .event-wrap {
@@ -37,6 +36,11 @@ body {
 .event-box {
   padding: 6px;
 }
+
+.event-code {
+  overflow: auto;
+}
+
 </style>
 </head>
 <body>
@@ -46,6 +50,8 @@ body {
       Single event
     </div>
 
+    <pre class="event-code"><code id="single-event-code"></code></pre>
+    
     <div class="event-box" id="single-normal"></div>
     <div class="event-box" id="single-set-lang"></div>
     <div class="event-box" id="single-set-button-text"></div>
@@ -54,8 +60,20 @@ body {
 
   <div class="event-wrap">
     <div class="title">
+      Single event with isAllDay
+    </div>
+
+    <pre class="event-code"><code id="single-event-with-isallday-code"></code></pre>
+    
+    <div class="event-box" id="single-event-with-isallday"></div>
+  </div>
+
+  <div class="event-wrap">
+    <div class="title">
       Multi events
     </div>
+
+    <pre class="event-code"><code id="multi-normal-code"></code></pre>
 
     <div class="event-box" id="multi-normal"></div>
     <div class="event-box" id="multi-set-lang"></div>
@@ -83,9 +101,12 @@ var singleEventArgs = {
   start       : startDate,
   end         : endDate,
   location    : 'Bangkok, Thailand',
-  description : 'Welcome everyone to simple plugin that ;,/?:@&=+$# allow you to add event to calendar easily.'
+  description : 'Welcome everyone to simple plugin that ;,/?:@&=+$#.'
 };
 var singleEvent = new Add2Calendar(singleEventArgs);
+
+// code
+document.getElementById('single-event-code').innerHTML = JSON.stringify(singleEvent.eventData, '', 2)
 
 // widget 1 - normal
 singleEvent.createWidget('#single-normal', function() {
@@ -107,6 +128,26 @@ singleEvent.createWidget('#single-reset-option');
 /*================================ Multiple events
 */
 
+var singleEventWithIsAllDayArgs = {
+  title       : 'Single event with isAllDay',
+  start       : startDate,
+  end         : endDate,
+  description : 'my description',
+  isAllDay    : true,
+};
+var singleEventWithIsAllDay = new Add2Calendar(singleEventWithIsAllDayArgs);
+
+// code
+document.getElementById('single-event-with-isallday-code').innerHTML = JSON.stringify(singleEventWithIsAllDay.eventData, '', 2)
+
+// widget 1 - normal
+singleEventWithIsAllDay.createWidget('#single-event-with-isallday', function() {
+  console.log('#single-event-with-isallday widget has been created');
+});
+
+/*================================ Multiple events
+*/
+
 var multiEventsArgs = [
   {
     title       : 'Add2Calendar plugin event 1',
@@ -123,9 +164,12 @@ var multiEventsArgs = [
     description : 'Event description 2'
   }
 ];
+var multiEvents = new Add2Calendar(multiEventsArgs);
+
+// code
+document.getElementById('multi-normal-code').innerHTML = JSON.stringify(multiEvents.eventData, '', 2)
 
 // widget 1 - normal
-var multiEvents = new Add2Calendar(multiEventsArgs);
 multiEvents.createWidget('#multi-normal', function() {
   console.log('#multi-normal widget has been created');
 });
