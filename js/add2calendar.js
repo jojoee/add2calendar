@@ -512,7 +512,6 @@ var Add2Calendar = function(eventData) {
     var result = document.createElement('div');
     result.innerHTML = html;
     result.className = this.textDomain;
-    result.id = this.textDomain;
 
     return result;
   };
