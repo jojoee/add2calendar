@@ -77,6 +77,43 @@ singleEvent.getYahooUrl(); // https://calendar.yahoo.com/?v=60&view=d&type=20&ti
 singleEvent.createWidget('#single-normal');
 ```
 
+```javascript
+// Example usage (React.js)
+
+import * as Add2Calendar from "add2calendar"
+import React from 'react'
+import 'add2calendar/css/add2calendar.css'
+
+class Add2CalendarComponent extends React.Component {
+  componentDidMount () {
+    const singleEvent = new Add2Calendar({
+      title: 'Add2Calendar plugin event',
+      start: 'December 19, 2020 10:30',
+      end: 'December 19, 2020 10:50',
+      location: 'Bangkok, Thailand',
+      description: 'Event description'
+    })
+    singleEvent.createWidget('#single-normal')
+  }
+
+  render() {
+    return (
+      <div id="single-normal"></div>
+    );
+  }
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Add2CalendarComponent />
+    </div>
+  );
+}
+
+export default App;
+```
+
 ```
 Parameters
 
