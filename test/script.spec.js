@@ -189,6 +189,8 @@ describe('Add2Calendar: widget', function() {
   - getWidgetNode
   - getWidgetBtnText
   - createWidget
+  - bindClickEvent
+  - hasClass
   - setOption
   - resetOption
   - update

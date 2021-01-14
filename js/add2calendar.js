@@ -1,36 +1,21 @@
 // prefix: a2cldr
 
-function a2cldrHasClass(ele, cls) {
-  return (' ' + ele.className + ' ').indexOf(' ' + cls + ' ') > -1;
-}
-
-function a2cldrOnButtonsClicked(ele) {
-  var activeClassName = 'active';
-  var parent = ele.parentNode;
-
-  if (a2cldrHasClass(parent, activeClassName)) {
-    parent.classList.remove(activeClassName);
-
-  } else {
-    parent.classList.add(activeClassName);
-  }
-}
-
 var Add2Calendar = function(eventData) {
 
   /*================================================================ Util
   */
   
   /**
-   * [mergeObj description]
-   * One deep level
+   * Check if the element has this class name
    *
-   * @see http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
-   * 
-   * @param  {[type]} obj1 [description]
-   * @param  {[type]} obj2 [description]
-   * @return {[type]}      [description]
+   * @param  {[type]} ele
+   * @param  {String} cls
+   * @return {Boolean}
    */
+  this.hasClass = function(ele, cls) {
+    return (' ' + ele.className + ' ').indexOf(' ' + cls + ' ') > -1;
+  };
+
   this.mergeObj = function(obj1, obj2) {
     var result = {}
 
@@ -519,7 +504,7 @@ var Add2Calendar = function(eventData) {
   };
 
   this.getWidgetNode = function() {
-    var html = '<span class="a2cldr-btn" onclick="a2cldrOnButtonsClicked(this);">'
+    var html = '<span class="a2cldr-btn">';
     html += this.getWidgetBtnText();
     html += '</span>';
     html += this.getEventListHtml();
@@ -547,11 +532,38 @@ var Add2Calendar = function(eventData) {
     this.selector = selector;
     this.eWidget = document.querySelector(selector);
 
+    // create and append into the DOM
     var node = this.getWidgetNode();
     this.eWidget.appendChild(node);
 
+    // bind an event
+    this.eButton = document.querySelector(selector + ' > .a2cldr > .a2cldr-btn');
+    this.bindClickEvent();
+
+    // callback
     if (this.isFunc(cb)) {
       cb();
+    }
+  };
+
+  this.bindClickEvent = function() {
+    var activeClassName = 'active';
+    var self = this;
+    var ele = this.eButton;
+    
+    ele.onclick = function() {
+      var parent = ele.parentNode;
+      if (self.hasClass(parent, activeClassName)) {
+        parent.classList.remove(activeClassName);
+      } else {
+        parent.classList.add(activeClassName);
+      }
+    }
+  };
+
+  this.unBindClickEvent = function() {
+    if (this.eButton && this.eButton.onclick) {
+      this.eButton.onclick = null;
     }
   };
 
@@ -642,6 +654,7 @@ var Add2Calendar = function(eventData) {
     
     this.selector = '';
     this.eWidget = null;
+    this.eButton = null; // button element to click for opening the list
 
     this.defaultOption = {
       lang: 'en',
