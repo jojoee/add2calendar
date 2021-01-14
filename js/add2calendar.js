@@ -4,7 +4,7 @@ var Add2Calendar = function(eventData) {
 
   /*================================================================ Util
   */
-  
+
   /**
    * Check if the element has this class name
    *
@@ -23,7 +23,7 @@ var Add2Calendar = function(eventData) {
     for (var attr in obj2) { result[attr] = obj2[attr]; }
 
     return result;
-  };  
+  };
 
   /**
    * @see https://stackoverflow.com/questions/2998784/how-to-output-numbers-with-leading-zeros-in-javascript
@@ -652,7 +652,7 @@ var Add2Calendar = function(eventData) {
     this.eventData = eventData;
     
     this.selector = '';
-    this.eWidget = null;
+    this.eWidget = null; // widget element
     this.eButton = null; // button element to click for opening the list
 
     this.defaultOption = {
