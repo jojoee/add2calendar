@@ -176,6 +176,9 @@ Apologize me, if I miss something
 
 ## Important changelog
 ```
+1.1.6
+- Update accessibility by using <button> tag instead
+
 1.1.5
 - Support component-based framework e.g. React.js
 
