@@ -504,9 +504,9 @@ var Add2Calendar = function(eventData) {
   };
 
   this.getWidgetNode = function() {
-    var html = '<span class="a2cldr-btn">';
+    var html = '<button class="a2cldr-btn" type="button">';
     html += this.getWidgetBtnText();
-    html += '</span>';
+    html += '</button>';
     html += this.getEventListHtml();
 
     var result = document.createElement('div');
