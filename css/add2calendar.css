@@ -21,6 +21,10 @@
             transition: all .2s ease-in-out;
     */
   box-sizing: border-box;
+  /* reset default agent style */
+  font: inherit;
+  color: inherit;
+  background: inherit;
 }
 .a2cldr .a2cldr-btn:before {
   display: inline-block;
