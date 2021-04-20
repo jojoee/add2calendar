@@ -1,8 +1,13 @@
+# development
 .bowerrc
 .gitattributes
 .gitkeep
 .nvmrc
 .eslintrc.js
 gulpfile.js
-.vscode
 .travis.yml
+screenshot
+test.html
+.vscode
+.idea
+npm-shrinkwrap.json

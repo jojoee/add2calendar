@@ -19,3 +19,7 @@ assets-bk
 
 # Graphic
 *.psd
+
+# IDE
+.vscode/
+.idea/
