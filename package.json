@@ -27,10 +27,14 @@
     "gulp-less": "^4.0.1",
     "gulp-notify": "2.2.0",
     "gulp-sourcemaps": "1.6.0",
-    "mocha": "2.5.3"
+    "mocha": "2.5.3",
+    "nyc": "^15.0.0"
   },
   "scripts": {
-    "lint": "eslint js test --env mocha",
+    "coverage": "nyc mocha test test/**/*.spec.js",
+    "coverage.check": "nyc check-coverage --statements 60 --branches 60 --functions 30 --lines 60",
+    "coverage.report": "cat ./coverage/lcov.info | codecov",
+    "eslint": "eslint src test --env mocha",
     "start": "gulp default",
     "test": "mocha test --reporter spec --recursive",
     "test.watch": "mocha test --reporter spec --recursive --watch"

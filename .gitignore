@@ -23,3 +23,7 @@ assets-bk
 # IDE
 .vscode/
 .idea/
+
+# test and coverage
+coverage
+.nyc_output
