@@ -43,6 +43,7 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+
     - name: Install dependencies
       run: npm install
 
@@ -58,7 +59,7 @@ jobs:
       run: |
         export TZ=Asia/Bangkok
         npm run test
-    
+
     - if: ${{ matrix.node-version == '12.x' }}
       name: Test coverage
       run: |
