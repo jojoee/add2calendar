@@ -5,7 +5,7 @@
 .nvmrc
 .eslintrc.js
 gulpfile.js
-.travis.yml
+.github
 screenshot
 test.html
 .vscode
