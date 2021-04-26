@@ -1,3 +1,4 @@
+/* global module */
 // prefix: a2cldr
 
 var Add2Calendar = function(eventData) {
@@ -19,8 +20,8 @@ var Add2Calendar = function(eventData) {
   this.mergeObj = function(obj1, obj2) {
     var result = {}
 
-    for (var attr in obj1) { result[attr] = obj1[attr]; }
-    for (var attr in obj2) { result[attr] = obj2[attr]; }
+    for (var attr1 in obj1) { result[attr1] = obj1[attr1]; }
+    for (var attr2 in obj2) { result[attr2] = obj2[attr2]; }
 
     return result;
   };
@@ -37,7 +38,7 @@ var Add2Calendar = function(eventData) {
   };
   
   /**
-   * [formatTime description]
+   * formatTime
    * 
    * @todo change naming
    * @param  {Date} date
@@ -126,6 +127,7 @@ var Add2Calendar = function(eventData) {
   this.serialize = function(obj) {
     var str = [];
     for (var p in obj) {
+      // eslint-disable-next-line
       if (obj.hasOwnProperty(p)) {
         str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
       }
@@ -143,6 +145,7 @@ var Add2Calendar = function(eventData) {
    * @return {[type]}     [description]
    */
   this.replaceSpecialCharacterAndSpaceWithHyphen = function(str) {
+    // eslint-disable-next-line
     return str.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'');
   };
 
@@ -256,12 +259,14 @@ var Add2Calendar = function(eventData) {
    */
   this.updateICalUrl = function() {
     var url = typeof document !== 'undefined' ? document.URL : ''; // todo fix it
+    var startDate = ''
+    var endDate = ''
 
     if (this.isSingleEvent) {
-      var startDate = this.eventData.isAllDay
+      startDate = this.eventData.isAllDay
         ? this.formatTime2(new Date(this.eventData.start))
         : this.formatTime(new Date(this.eventData.start));
-      var endDate = this.eventData.isAllDay
+      endDate = this.eventData.isAllDay
         ? this.formatTime2(new Date(this.eventData.end))
         : this.formatTime(new Date(this.eventData.end));
 
@@ -289,10 +294,10 @@ var Add2Calendar = function(eventData) {
       var iCalData = [];
       for (i = 0; i < n; i++) {
         var data = this.eventData[i];
-        var startDate = this.eventData.isAllDay
+        startDate = this.eventData.isAllDay
           ? this.formatTime2(new Date(data.start))
           : this.formatTime(new Date(data.start));
-        var endDate = this.eventData.isAllDay
+        endDate = this.eventData.isAllDay
           ? this.formatTime2(new Date(data.end))
           : this.formatTime(new Date(data.end));
 
@@ -369,10 +374,10 @@ var Add2Calendar = function(eventData) {
       var startDate = new Date(this.eventData.start),
         endDate = new Date(this.eventData.end);
 
-      startDateTimezoneOffset = startDate.getTimezoneOffset();
+      var startDateTimezoneOffset = startDate.getTimezoneOffset();
       startDate.setMinutes(startDate.getMinutes() - 2 * startDateTimezoneOffset); // HACK
 
-      endDateTimezoneOffset = endDate.getTimezoneOffset();
+      var endDateTimezoneOffset = endDate.getTimezoneOffset();
       endDate.setMinutes(endDate.getMinutes() - endDateTimezoneOffset); // HACK
 
       startDate = this.formatTime(startDate).slice(0, -1);
@@ -675,4 +680,4 @@ var Add2Calendar = function(eventData) {
 if (typeof module !== 'undefined' &&
   module.exports != null) {
   module.exports = Add2Calendar
-};
+}

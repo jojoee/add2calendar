@@ -1,3 +1,5 @@
+/* global require, global */
+
 var chai = require('chai'),
   expect = chai.expect;
 
@@ -138,14 +140,14 @@ describe('Add2Calendar: widget', function() {
       'data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20200228T060354Z%0ADTEND:20200229T060354Z%0ASUMMARY:Add2Calendar%20plugin%20event%0ADESCRIPTION:Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR',
       'icon-outlook',
       true,
-      uniqueId='123'
+      '123'
     )).to.equals('<a  download="add2Calendar-outlook-123"  class="icon-outlook" target="_blank" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20200228T060354Z%0ADTEND:20200229T060354Z%0ASUMMARY:Add2Calendar%20plugin%20event%0ADESCRIPTION:Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR">Outlook</a>');
     expect(event.getLinkHtml(
       'Outlook',
       'data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160727T033000Z%0ADTEND:20160727T123000Z%0ASUMMARY:Add2Calendar%20plugin%20event%201%0ADESCRIPTION:Event%20description%201%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160728T033000Z%0ADTEND:20160729T122000Z%0ASUMMARY:Add2Calendar%20plugin%20event%202%0ADESCRIPTION:Event%20description%202%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR',
       'icon-outlook',
       true,
-      uniqueId='456'
+      '456'
     )).to.equals('<a  download="add2Calendar-outlook-456"  class="icon-outlook" target="_blank" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160727T033000Z%0ADTEND:20160727T123000Z%0ASUMMARY:Add2Calendar%20plugin%20event%201%0ADESCRIPTION:Event%20description%201%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160728T033000Z%0ADTEND:20160729T122000Z%0ASUMMARY:Add2Calendar%20plugin%20event%202%0ADESCRIPTION:Event%20description%202%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR">Outlook</a>');
 
     // iCal
@@ -154,14 +156,14 @@ describe('Add2Calendar: widget', function() {
       'data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20200228T060354Z%0ADTEND:20200229T060354Z%0ASUMMARY:Add2Calendar%20plugin%20event%0ADESCRIPTION:Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR',
       'icon-ical',
       true,
-      uniqueId='789'
+      '789'
     )).to.equals('<a  download="add2Calendar-ical-789"  class="icon-ical" target="_blank" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20200228T060354Z%0ADTEND:20200229T060354Z%0ASUMMARY:Add2Calendar%20plugin%20event%0ADESCRIPTION:Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR">iCal</a>');
     expect(event.getLinkHtml(
       'iCal',
       'data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160727T033000Z%0ADTEND:20160727T123000Z%0ASUMMARY:Add2Calendar%20plugin%20event%201%0ADESCRIPTION:Event%20description%201%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160728T033000Z%0ADTEND:20160729T122000Z%0ASUMMARY:Add2Calendar%20plugin%20event%202%0ADESCRIPTION:Event%20description%202%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR',
       'icon-ical',
       true,
-      uniqueId='0'
+      '0'
     )).to.equals('<a  download="add2Calendar-ical-0"  class="icon-ical" target="_blank" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160727T033000Z%0ADTEND:20160727T123000Z%0ASUMMARY:Add2Calendar%20plugin%20event%201%0ADESCRIPTION:Event%20description%201%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0ABEGIN:VEVENT%0AURL:http://127.0.0.1:5500%0ADTSTART:20160728T033000Z%0ADTEND:20160729T122000Z%0ASUMMARY:Add2Calendar%20plugin%20event%202%0ADESCRIPTION:Event%20description%202%0ALOCATION:Bangkok,%20Thailand%0AEND:VEVENT%0AEND:VCALENDAR">iCal</a>');
   });
 

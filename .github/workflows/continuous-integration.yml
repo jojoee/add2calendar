@@ -33,6 +33,10 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - if: ${{ matrix.node-version == '12.x' }}
+      name: Linting with ESLint
+      run: npm run eslint
+
     - name: Test
       run: |
         export TZ=Asia/Bangkok
