@@ -36,6 +36,7 @@
     "coverage.report": "cat ./coverage/lcov.info | codecov",
     "eslint": "eslint js test --env mocha",
     "start": "gulp default",
+    "build": "gulp build",
     "test": "mocha test --reporter spec --recursive",
     "test.watch": "mocha test --reporter spec --recursive --watch"
   }

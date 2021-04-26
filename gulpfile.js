@@ -52,3 +52,4 @@ gulp.task('serve', function() {
 });
 
 gulp.task('default', ['serve']);
+gulp.task('build', ['less']);
