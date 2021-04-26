@@ -1,7 +1,11 @@
 # Add2Calendar
-[![Travis](https://img.shields.io/travis/jojoee/add2calendar.svg)](https://travis-ci.org/jojoee/add2calendar)
+
+![release](https://github.com/jojoee/add2calendar/workflows/release/badge.svg?branch=master)
+![continuous integration](https://github.com/jojoee/add2calendar/workflows/continuous%20integration/badge.svg?branch=master)
+[![Codecov](https://img.shields.io/codecov/c/github/jojoee/add2calendar.svg)](https://codecov.io/github/jojoee/add2calendar)
 [![Bower Version](https://img.shields.io/bower/v/add2calendar.svg)](https://bower.io/search/?q=add2calendar)
 [![Npm Version](https://img.shields.io/npm/v/add2calendar.svg)](https://www.npmjs.com/package/add2calendar)
+[![License - npm](https://img.shields.io/npm/l/add2calendar.svg)](http://opensource.org/licenses/MIT)
 [![Release Version](https://img.shields.io/github/release/jojoee/add2calendar.svg)](https://github.com/jojoee/add2calendar/releases)
 [![Downloads](https://img.shields.io/npm/dt/add2calendar.svg)](https://github.com/jojoee/add2calendar/archive/master.zip)
 
