@@ -33,6 +33,14 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Test and test coverage
+    - name: Test
       run: |
-        export TZ=Asia/Bangkok && npm run coverage
+        export TZ=Asia/Bangkok
+        npm run test
+    
+    - if: matrix.node-version >= 12
+      name: Test coverage
+      run: |
+        export TZ=Asia/Bangkok
+        npm run coverage
+        npm run coverage.check
