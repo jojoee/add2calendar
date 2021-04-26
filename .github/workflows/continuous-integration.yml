@@ -38,7 +38,7 @@ jobs:
         export TZ=Asia/Bangkok
         npm run test
     
-    - if: matrix.node-version == 12.x
+    - if: ${{ matrix.node-version == '12.x' }}
       name: Test coverage
       run: |
         export TZ=Asia/Bangkok
