@@ -31,7 +31,7 @@
     "nyc": "^15.0.0"
   },
   "scripts": {
-    "coverage": "nyc mocha test test/**/*.spec.js",
+    "coverage": "nyc --reporter=lcov mocha test test/**/*.spec.js",
     "coverage.check": "nyc check-coverage --statements 60 --branches 60 --functions 30 --lines 60",
     "coverage.report": "cat ./coverage/lcov.info | codecov",
     "eslint": "eslint src test --env mocha",
