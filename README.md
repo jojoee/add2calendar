@@ -52,10 +52,13 @@ Install
 const Add2Calendar = require('add2calendar')
 // Import via ES6
 import * as Add2Calendar from "add2calendar"
-// Import via githack
+```
+
+```html
+<!-- Import via githack -->
 <link rel="stylesheet" href="https://rawcdn.githack.com/jojoee/add2calendar/v1.1.2/css/add2calendar.css">
 <script src="https://rawcdn.githack.com/jojoee/add2calendar/v1.1.2/js/add2calendar.js"></script>
-// Import via bower
+<!-- Import via bower -->
 <link rel="stylesheet" href="./bower_components/add2calendar/css/add2calendar.css">
 <script src="./bower_components/add2calendar/js/add2calendar.js"></script>
 ```
