@@ -35,4 +35,4 @@ jobs:
 
     - name: Test and test coverage
       run: |
-        npm run test
+        export TZ=Asia/Bangkok && npm run test
