@@ -183,7 +183,7 @@ Apologize me, if I miss something
 ## Important changelog
 ```
 1.1.7
-- Testing all nodejs version 4 to 16
+- Test against multiple nodejs versions since 4 to 16
 
 1.1.6
 - Update accessibility by using <button> tag instead
