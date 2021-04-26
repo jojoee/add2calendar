@@ -44,3 +44,7 @@ jobs:
         export TZ=Asia/Bangkok
         npm run coverage
         npm run coverage.check
+
+    - if: ${{ matrix.node-version == '12.x' }}
+      name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
