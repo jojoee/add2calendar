@@ -10,7 +10,7 @@ Allow you to add event to `calendar` easier
 [![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/master/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/)
 
 ## Feature
-- Support All Node.js versions 4.0.0, 5.0.0, 6.0.0, 7.0.0, 8.0.0, 9.0.0, 10.0.0, 11.0.0
+- Support All Node.js versions since 4 to 16
 - Zero dependency
 - Support ES6 module importing
 - [x] Single Event: Google
@@ -29,6 +29,7 @@ Allow you to add event to `calendar` easier
 - Opera 11.5
 
 ## Getting Started
+
 ```
 Install
 
@@ -40,18 +41,19 @@ Install
 2.1 Install npm
 2.2 Install bower: `npm install -g bower`
 2.3 Install package: `bower install --save add2calendar`
+```
 
-Import
+```javascript
+// Import via CommonJS
+const Add2Calendar = require('add2calendar')
+// Import via ES6
+import * as Add2Calendar from "add2calendar"
 // Import via githack
 <link rel="stylesheet" href="https://rawcdn.githack.com/jojoee/add2calendar/v1.1.2/css/add2calendar.css">
 <script src="https://rawcdn.githack.com/jojoee/add2calendar/v1.1.2/js/add2calendar.js"></script>
 // Import via bower
 <link rel="stylesheet" href="./bower_components/add2calendar/css/add2calendar.css">
 <script src="./bower_components/add2calendar/js/add2calendar.js"></script>
-// Import via CommonJS
-const Add2Calendar = require('add2calendar')
-// Import via ES6
-import * as Add2Calendar from "add2calendar"
 ```
 
 ```javascript
@@ -211,29 +213,24 @@ Apologize me, if I miss something
 - [ ] Update Google format to [new format](https://developers.google.com/google-apps/calendar/gadgets/event/)
 - [x] Submit to `bower`
 - [x] Submit to `npm`
-- [ ] Wordpress plugin
 - [ ] `start` and `end` parameters can be `Date` objet
-- [ ] Refactor
-- [x] Unit test: happy path
-- [ ] Unit test: failed path
+- [x] Unit test
 - [ ] Unit test: automated test on browser environment
-- [ ] Unit test: coverage
+- [x] Unit test: coverage
 - [ ] Create default value of `end` variable (should be equal `start` + 1 day)
 - [x] Support ES6 (module export)
-- [ ] Complete `DocBlockr`
 - [x] Support callback function
 - [x] Set language
 - [x] Support `download` attr
 - [x] Refactor `option` parameter
 - [x] Add lint tools
-- [ ] Implement [tape](https://github.com/substack/tape)
 - [ ] Support Office 365
 - [ ] Support https://outlook.live.com/
 - [ ] Yahoo, seems to be broken at 2021/01/09
 
 ## Development and contribution
 
-```
+```bash
 nvm install 4.0.0
 nvm install 4.0.0 && nvm use 4.0.0
 # or "nvm install 11.15.0 && nvm use 11.15.0"
