@@ -123,6 +123,35 @@ function App() {
 export default App;
 ```
 
+```javascript
+// Example usage (multiple events)
+
+var multiEventsArgs = [
+  {
+    title       : 'Add2Calendar plugin event 1',
+    start       : 'July 27, 2016 10:30',
+    end         : 'July 27, 2016 19:30',
+    location    : 'Bangkok, Thailand',
+    description : 'Event description 1',
+  },
+  {
+    title       : 'Add2Calendar plugin event 2',
+    start       : 'July 28, 2016 10:30',
+    end         : 'July 29, 2016 19:20',
+    location    : 'Bangkok, Thailand',
+    description : 'Event description 2',
+  }
+];
+var multiEvents = new Add2Calendar(multiEventsArgs);
+
+// to get actual url
+multiEvents.getICalUrl(); // data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2...
+multiEvents.getOutlookUrl(); // data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2...
+
+// render a widget
+multiEvents.createWidget('#multi-normal');
+```
+
 ```
 Parameters
 
