@@ -32,7 +32,7 @@
   },
   "scripts": {
     "coverage": "nyc --reporter=lcov mocha test test/**/*.spec.js",
-    "coverage.check": "nyc check-coverage --statements 60 --branches 60 --functions 30 --lines 60",
+    "coverage.check": "nyc check-coverage --statements 50 --branches 50 --functions 30 --lines 50",
     "coverage.report": "cat ./coverage/lcov.info | codecov",
     "eslint": "eslint js test --env mocha",
     "start": "gulp default",
