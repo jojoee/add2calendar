@@ -441,9 +441,7 @@ var Add2Calendar = function(eventData) {
 
       // override
       if (this.eventData.isAllDay) {
-        var endDate = new Date(this.eventData.start);
-        endDate.setDate(endDate.getDate() - 1)
-        yahooArgs['dur'] = 'allday'
+        yahooArgs.dur = 'allday'
       }
 
       this.yahooUrl = 'https://calendar.yahoo.com/?v=60&' + this.serialize(yahooArgs);
