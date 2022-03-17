@@ -417,27 +417,23 @@ var Add2Calendar = function(eventData) {
    */
   this.updateYahooUrl = function() {
     if (this.isSingleEvent) {
-      var startDate = this.eventData.isAllDay
-        ? this.formatTime2(new Date(this.eventData.start))
-        : this.formatTime(new Date(this.eventData.start))
+      // address the timezone on both "start" and "end"
+      // "start"
+      var startDate = new Date(this.eventData.start);
+      startDate.setMinutes(startDate.getMinutes() - startDate.getTimezoneOffset());
+      var startDateStr = this.formatTime(startDate);
 
-      // FIXED: Yahoo! calendar bug
-      // 
-      // Yahoo! did calculate timezone for `start`
-      // but they did not calculate timezone for `end`
-      var tmp = new Date(this.eventData.end);
-      var timezoneOffset = tmp.getTimezoneOffset();
-      tmp.setMinutes(tmp.getMinutes() - timezoneOffset);
-      var endDate = this.eventData.isAllDay
-        ? this.formatTime2(tmp)
-        : this.formatTime(tmp)
+      // "end"
+      var endDate = new Date(this.eventData.end);
+      endDate.setMinutes(endDate.getMinutes() - endDate.getTimezoneOffset());
+      var endDateStr = this.formatTime(endDate);
 
       var yahooArgs = {
         'view'      : 'd',
         'type'      : '20',
         'title'     : (this.eventData.title || ''),
-        'st'        : startDate,
-        'et'        : endDate,
+        'st'        : startDateStr,
+        'et'        : endDateStr,
         // 'dur'       : '',
         'in_loc'    : (this.eventData.location || ''),
         'desc'      : (this.eventData.description || '')

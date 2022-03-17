@@ -251,13 +251,13 @@ describe('Add2Calendar: single event', function() {
   });
 
   it('e2e, Yahoo', function() {
-    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T080042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
+    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T150042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
     expect(event.getLiHtml(
       'Yahoo!',
-      'https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T074340Z&et=20200229T144340Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.',
+      'https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T150042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.',
       'yahoo',
       undefined
-    )).to.equals('<li class="a2cldr-item a2cldr-yahoo"><a  class="icon-yahoo" target="_blank" href="https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T074340Z&et=20200229T144340Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.">Yahoo!</a></li>');
+    )).to.equals('<li class="a2cldr-item a2cldr-yahoo"><a  class="icon-yahoo" target="_blank" href="https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T150042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.">Yahoo!</a></li>');
   });
 });
 
@@ -286,7 +286,7 @@ describe('Add2Calendar: single event with isAllDay = true', function() {
 
   it('e2e, Yahoo', function() {
     // only difference is generated url
-    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228&et=20200229&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
+    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T150042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
   });
 });
 
@@ -311,7 +311,7 @@ describe('Add2Calendar: single event, contains special characters', function() {
   });
 
   it('e2e, Yahoo', function() {
-    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20contains%20special%20characters&st=20200228T080042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
+    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20contains%20special%20characters&st=20200228T150042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20%3B%2C%2F%3F%3A%40%26%3D%2B%24%23%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
   });
 });
 
