@@ -460,6 +460,7 @@ var Add2Calendar = function(eventData) {
   /*================================================================ Widget
   */
   
+  // TODO: implement test
   this.getEventListHtml = function() {
     var html = '<ul class="a2cldr-list">';
 
