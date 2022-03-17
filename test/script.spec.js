@@ -286,7 +286,7 @@ describe('Add2Calendar: single event with isAllDay = true', function() {
 
   it('e2e, Yahoo', function() {
     // only difference is generated url
-    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T150042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.');
+    expect(event.updateYahooUrl()).to.equals('https://calendar.yahoo.com/?v=60&view=d&type=20&title=Add2Calendar%20plugin%20event&st=20200228T150042Z&et=20200229T150042Z&in_loc=Bangkok%2C%20Thailand&desc=Welcome%20everyone%20to%20simple%20plugin%20that%20allow%20you%20to%20add%20event%20to%20calendar%20easily.&dur=allday');
   });
 });
 

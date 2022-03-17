@@ -428,16 +428,23 @@ var Add2Calendar = function(eventData) {
       endDate.setMinutes(endDate.getMinutes() - endDate.getTimezoneOffset());
       var endDateStr = this.formatTime(endDate);
 
+      // param
       var yahooArgs = {
         'view'      : 'd',
         'type'      : '20',
         'title'     : (this.eventData.title || ''),
         'st'        : startDateStr,
         'et'        : endDateStr,
-        // 'dur'       : '',
         'in_loc'    : (this.eventData.location || ''),
         'desc'      : (this.eventData.description || '')
       };
+
+      // override
+      if (this.eventData.isAllDay) {
+        var endDate = new Date(this.eventData.start);
+        endDate.setDate(endDate.getDate() - 1)
+        yahooArgs['dur'] = 'allday'
+      }
 
       this.yahooUrl = 'https://calendar.yahoo.com/?v=60&' + this.serialize(yahooArgs);
     }
