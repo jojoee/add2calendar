@@ -1,6 +1,6 @@
 # Add2Calendar
 
-![release](https://github.com/jojoee/add2calendar/workflows/release/badge.svg?branch=master)
+![release](https://github.com/jojoee/add2calendar/workflows/release/badge.svg)
 ![continuous integration](https://github.com/jojoee/add2calendar/workflows/continuous%20integration/badge.svg?branch=master)
 [![Codecov](https://img.shields.io/codecov/c/github/jojoee/add2calendar.svg)](https://codecov.io/github/jojoee/add2calendar)
 [![Bower Version](https://img.shields.io/bower/v/add2calendar.svg)](https://bower.io/search/?q=add2calendar)
