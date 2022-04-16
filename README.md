@@ -210,6 +210,9 @@ Apologize me, if I miss something
 
 ## Important changelog
 ```
+1.1.8
+- Fix Yahoo, "isAllDay" is not working
+
 1.1.7
 - Test against multiple nodejs versions since 4 to 16
 
