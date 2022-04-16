@@ -14,16 +14,12 @@ Allow you to add event to `calendar` easier
 [![Screenshot 1](https://raw.githubusercontent.com/jojoee/add2calendar/master/screenshot/screenshot1.gif "Screenshot 1")](http://jojoee.github.io/add2calendar/)
 
 ## Feature
-- Support All Node.js versions since 4 to 16
-- Zero dependency
-- Support ES6 module importing
-- [x] Single Event: Google
-- [x] Single Event: iCal
-- [x] Single Event: Outlook
-- [x] Single Event: Outlook Online (disabled since v1.1.0)
-- [x] Single Event: Yahoo!
-- [x] Multi Event: iCal
-- [x] Multi Event: Outlook
+| | Single Event | Multi Event |
+| --- | --- | --- |
+| Google | ✅ | |
+| Yahoo | ✅ | |
+| iCal | ✅ | ✅ |
+| Outlook | ✅ | ✅ |
 
 ## Compatible with all browsers:
 - Google Chrome 19+
@@ -249,23 +245,20 @@ Apologize me, if I miss something
 ```
 
 ## Future Update
+- Support All Node.js versions since 4 to 16
+- Zero dependency
+- Support ES6 module importing
 - [ ] Update Google format to [new format](https://developers.google.com/google-apps/calendar/gadgets/event/)
-- [x] Submit to `bower`
-- [x] Submit to `npm`
 - [ ] `start` and `end` parameters can be `Date` objet
-- [x] Unit test
 - [ ] Unit test: automated test on browser environment
-- [x] Unit test: coverage
 - [ ] Create default value of `end` variable (should be equal `start` + 1 day)
-- [x] Support ES6 (module export)
 - [x] Support callback function
 - [x] Set language
 - [x] Support `download` attr
 - [x] Refactor `option` parameter
-- [x] Add lint tools
 - [ ] Support Office 365
 - [ ] Support https://outlook.live.com/
-- [ ] Yahoo, seems to be broken at 2021/01/09
+- [ ] Recurring events e.g. weekly, monthly
 
 ## Development and contribution
 
